@@ -1,0 +1,784 @@
+<!DOCTYPE html [
+        <!ENTITY nbsp "&#160;">
+]>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta charset="utf-8"/>
+    <title>报价</title>
+    <style type="text/css">
+        @page {
+            size: 480mm 340mm;
+        }
+        html,body,table,tr,th,td,thead,tbody,tfoot,p,span,div,h1,ul,li,strong{margin:0px;padding:0px;border:none;font-size:12pt;font-weight:400;
+            font-style:normal;text-decoration:none;font-family:SimSun;mso-generic-font-family:auto;mso-font-charset:134;mso-number-format:"\@";
+            color:#000;/*font-size:12px;*/-webkit-box-sizing:border-box;box-sizing:border-box;}
+        .offerProdWraper{width:100%; }
+        .offerTableWraper{margin-bottom:25px; width:100%;}
+        .offerTableWraper2{width:80%;}
+        h1{padding:10px 0px; font-size:22px; font-weight:bold; text-align:center;}
+        .listWraper{margin-bottom:20px; padding:0px 0px 10px; border-bottom:2px solid black; clear:both; overflow:hidden;}
+        .listWraper .left{float:left;}
+        .listWraper .right{float:right;}
+        .listWraper li{list-style:none;}
+        .listWraper p,.listWraper span{padding:5px 0px; display:inline-block;}
+        .listWraper p{width:200px;}
+        .explainWraper{padding:5px;width:100%; line-height:24px;background:#f2f2f2;}
+        .explainWraper strong{font-weight:bold;}
+        .offerTable{border-spacing: 0; border-collapse:collapse; width:100%;}
+        .offerTable thead th,.offerTable tbody td{text-align:center; border:1px solid #000; padding:5px;}
+        .offerTable thead th{font-weight:normal;  font-weight:bold; background:#f2f2f2;}
+        .offerTable tbody td{}
+        .offerTable_index{width:3%}
+        .offerTable_boxName{width:7%;}
+        .offerTable_boxType{width:5%}
+        .offerTable_spec{width:15%}
+        .offerTable_layer{width:3%}
+        .offerTable_number{width:4%}
+        .offerTable_material{width:16%}
+        .offerTable_offer{width:22%}
+        .offerTable_offer1{width:18%}
+        .offerTable_surface{width:6%}
+        .offerTable_mould{width:3%}
+        .offerTable_boxWeight{width:3%}
+        .offerTable_sidePressure{width:4%}
+        .offerTable_bursting{width:4%}
+        .phone{float:right;}
+        .pageNext {
+            page-break-after: always;
+        }
+    </style>
+</head>
+
+<body>
+<div class="offerProdWraper">
+    <h1>一撕得产品报价单</h1>
+    <div class="listWraper">
+        <ul class="left">
+            <li><p>报价单号</p><span>${onlinePriceCode!''}</span></li>
+            <li><p>客户简称</p><span>${clientAbbreviation!''}</span></li>
+            <li><p>联系人及联系方式</p><span>${contact!''}&nbsp;&nbsp;&nbsp;&nbsp;${phone!''}</span></li>
+        </ul>
+        <ul class="right">
+            <li><p>报价日期</p><span>${downloadOnlinePriceDate!''}</span></li>
+            <li><p>截止日期</p><span>${downLoadExpiryDate!''}</span></li>
+        </ul>
+    </div>
+
+    <#list quotationWarehousePOJOS as Warehouse>
+
+    <#list Warehouse.quotationProductPOJOS as product>
+        <#if ((product_index+1)%7)!=0>
+        <#if product.printType == "2">
+        <div class="offerTableWraper">
+            <table class="offerTable">
+                <thead>
+                <tr>
+                    <th rowspan="2" class="offerTable_index">序号</th>
+                    <th rowspan="2" class="offerTable_boxName">纸箱名称</th>
+                    <th rowspan="2" class="offerTable_boxType">箱型</th>
+                    <th colspan="5" class="offerTable_spec">纸箱规格（mm）</th>
+                    <th rowspan="2" class="offerTable_layer">层数</th>
+                    <th colspan="${product.paperNumber?substring(0,1)}" class="offerTable_material">配材克重</th>
+                    <th rowspan="2" class="offerTable_layer">印刷方式</th>
+                    <th rowspan="2" class="offerTable_surface">工艺</th>
+                    <th colspan="${product.priceNumber!''}" class="offerTable_offer">报价(元/每个)</th>
+                    <#if product.mouldPriceShow == "1">
+                    <th rowspan="2" class="offerTable_mould">印模费用</th>
+                    </#if>
+                    <#if product.weightShow == "暂时不显示了">
+                    <th rowspan="2" class="offerTable_boxWeight">纸箱重量</th>
+                    </#if>
+                    <#if product.sidePressureShow == "1">
+                    <th rowspan="2" class="offerTable_sidePressure">边压强度</th>
+                    </#if>
+                    <#if product.burstingShow == "1">
+                    <th rowspan="2" class="offerTable_bursting">耐破强度</th>
+                    </#if>
+                    <#if product.knifeVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">刀版费</th>
+                    </#if>
+                    <#if product.printVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">印版费</th>
+                    </#if>
+                </tr>
+                <tr>
+                    <th>口径</th>
+                    <th>长度</th>
+                    <th>宽度</th>
+                    <th>高度</th>
+                    <th>楞型</th>
+                    <#if product.paperNumber == "3层">
+                        <th>面纸</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                    <#elseif product.paperNumber == "4层">
+                        <th>面纸1</th>
+                        <th>面纸2</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                     <#elseif product.paperNumber == "5层">
+                         <th>面纸</th>
+                         <th>瓦楞1</th>
+                         <th>夹层纸</th>
+                         <th>瓦楞2</th>
+                         <th>里纸</th>
+                         <#else>
+                             <th>面纸1</th>
+                             <th>面纸2</th>
+                             <th>瓦楞1</th>
+                             <th>夹层纸</th>
+                             <th>瓦楞2</th>
+                             <th>里纸</th>
+                         </#if>
+                    <#if product.stepwise01Show == "1">
+                        <#if product.stepwise01Label??>
+                            <th>${product.stepwise01Label!''}</th>
+                            <#else>
+                                <th>0</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise02Show == "1">
+                        <#if product.stepwise02Label??>
+                            <th>${product.stepwise02Label!''}</th>
+                            <#else>
+                                <th>0</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise03Show == "1">
+                        <#if product.stepwise03Label??>
+                            <th>${product.stepwise03Label!''}</th>
+                            <#else>
+                                <th>0</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise04Show == "1">
+                        <#if product.stepwise04Label??>
+                            <th>${product.stepwise04Label!''}</th>
+                            <#else>
+                                <th>0</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise05Show == "1">
+                        <#if product.stepwise05Label??>
+                            <th>${product.stepwise05Label!''}</th>
+                            <#else>
+                                <th>0</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise06Show == "1">
+                        <#if product.stepwise06Label??>
+                            <th>${product.stepwise06Label!''}</th>
+                            <#else>
+                                <th>0</th>
+                        </#if>
+                    </#if>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td height="40px">${product_index+1!''}</td>
+                        <td height="40px">${product.name!''}</td>
+                        <td height="40px">${product.standardProductTypeName!''}</td>
+                        <td height="40px">${product.sizeTypeName!''}</td>
+                        <td height="40px">${product.displayLengthInMm!''}</td>
+                        <td height="40px">${product.displayWidthInMm!''}</td>
+                        <td height="40px">${product.displayHeightInMm!''}</td>
+                        <td height="40px">${product.edgeValue!''}</td>
+                        <td height="40px">${product.paperNumber!''}</td>
+                        <#if product.paperNumber == "3层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                            <#elseif product.paperNumber == "4层">
+                                <td height="40px">${product.linerPaper!''}</td>
+                                <td height="40px">${product.linerPaperTwo!''}</td>
+                                <td height="40px">${product.edgeOne!''}</td>
+                                <td height="40px">${product.insidePaper!''}</td>
+                                <#elseif product.paperNumber == "5层">
+                                    <td height="40px">${product.linerPaper!''}</td>
+                                    <td height="40px">${product.edgeOne!''}</td>
+                                    <td height="40px">${product.corrugatedPaper!''}</td>
+                                    <td height="40px">${product.edgeTwo!''}</td>
+                                    <td height="40px">${product.insidePaper!''}</td>
+                                    <#else>
+                                        <td height="40px">${product.linerPaper!''}</td>
+                                        <td height="40px">${product.linerPaperTwo!''}</td>
+                                        <td height="40px">${product.edgeOne!''}</td>
+                                        <td height="40px">${product.corrugatedPaper!''}</td>
+                                        <td height="40px">${product.edgeTwo!''}</td>
+                                        <td height="40px">${product.insidePaper!''}</td>
+                        </#if>
+                        <td height="40px">水印</td>
+                        <td height="40px">${product.printTypeNameAndTechnology!''}</td>
+
+                        <#if product.stepwise01Show == "1">
+                            <td height="40px">${product.stepwise01!''}</td>
+                        </#if>
+                        <#if product.stepwise02Show == "1">
+                            <td height="40px">${product.stepwise02!''}</td>
+                        </#if>
+                        <#if product.stepwise03Show == "1">
+                            <td height="40px">${product.stepwise03!''}</td>
+                        </#if>
+                        <#if product.stepwise04Show == "1">
+                            <td height="40px">${product.stepwise04!''}</td>
+                        </#if>
+                        <#if product.stepwise05Show == "1">
+                            <td height="40px">${product.stepwise05!''}</td>
+                        </#if>
+                        <#if product.stepwise06Show == "1">
+                            <td height="40px">${product.stepwise06!''}</td>
+                        </#if>
+
+                        <#if product.mouldPriceShow == "1">
+                            <td height="40px">${product.mouldPrice!''}</td>
+                        </#if>
+                        <#if product.weightShow == "暂时不显示了">
+                            <td height="40px">${product.boxWeight!''}</td>
+                        </#if>
+                        <#if product.sidePressureShow == "1">
+                            <td height="40px">${product.sidePressure!''}N/m</td>
+                        </#if>
+                        <#if product.burstingShow == "1">
+                            <td height="40px">${product.bursting!''}Kpa</td>
+                        </#if>
+                        <#if product.knifeVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.knifeVersionFee!''}</td>
+                        </#if>
+                        <#if product.printVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.printVersionFee!''}</td>
+                        </#if>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <#else>
+        <div class="offerTableWraper">
+            <table class="offerTable">
+                <thead>
+                <tr>
+                    <th rowspan="2" class="offerTable_index">序号</th>
+                    <th rowspan="2" class="offerTable_boxName">纸箱名称</th>
+                    <th rowspan="2" class="offerTable_boxType">箱型</th>
+                    <#if product.paperNumber == "1层">
+                        <th colspan="3" class="offerTable_spec">纸箱规格（mm）</th>
+                    <#else>
+                        <th colspan="5" class="offerTable_spec">纸箱规格（mm）</th>
+                    </#if>
+                    <th rowspan="2" class="offerTable_layer">层数</th>
+                    <th colspan="${product.paperNumber?substring(0,1)}" class="offerTable_material">配材克重</th>
+                    <th rowspan="2" class="offerTable_layer">印刷方式</th>
+                    <th rowspan="2" class="offerTable_surface">工艺</th>
+                    <th rowspan="2" class="offerTable_number">数量</th>
+                    <th colspan="2" class="offerTable_offer1">报价(元/每个)</th>
+                    <#if product.mouldPriceShow == "1">
+                    <th rowspan="2" class="offerTable_mould">印模费用</th>
+                    </#if>
+                    <#if product.weightShow == "暂时不显示了">
+                    <th rowspan="2" class="offerTable_boxWeight">纸箱重量</th>
+                    </#if>
+                    <#if product.sidePressureShow == "1">
+                    <th rowspan="2" class="offerTable_sidePressure">边压强度</th>
+                    </#if>
+                    <#if product.burstingShow == "1">
+                    <th rowspan="2" class="offerTable_bursting">耐破强度</th>
+                    </#if>
+                    <#if product.knifeVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">刀版费</th>
+                    </#if>
+                    <#if product.printVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">印版费</th>
+                    </#if>
+                </tr>
+                <tr>
+                    <#if product.paperNumber == "1层">
+                        <th>长度</th>
+                        <th>宽度</th>
+                        <th>高度</th>
+                    <#else>
+                        <th>口径</th>
+                        <th>长度</th>
+                        <th>宽度</th>
+                        <th>高度</th>
+                        <th>楞型</th>
+                    </#if>
+                    <#if product.paperNumber == "1层">
+                        <th>面纸</th>
+                    <#elseif product.paperNumber == "3层">
+                        <th>面纸</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                    <#elseif product.paperNumber == "4层">
+                        <th>面纸1</th>
+                        <th>面纸2</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                     <#elseif product.paperNumber == "5层">
+                         <th>面纸</th>
+                         <th>瓦楞1</th>
+                         <th>夹层纸</th>
+                         <th>瓦楞2</th>
+                         <th>里纸</th>
+                     <#else>
+                         <th>面纸1</th>
+                         <th>面纸2</th>
+                         <th>瓦楞1</th>
+                         <th>夹层纸</th>
+                         <th>瓦楞2</th>
+                         <th>里纸</th>
+                     </#if>
+                        <th>单个纸箱</th>
+                        <th>开机费</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <#if product.paperNumber == "1层">
+                            <td height="40px">${product_index+1!''}</td>
+                            <td height="40px">${product.name!''}</td>
+                            <td height="40px">${product.standardProductTypeName!''}</td>
+                            <td height="40px">${product.displayLengthInMm!''}</td>
+                            <td height="40px">${product.displayWidthInMm!''}</td>
+                            <td height="40px">${product.displayHeightInMm!''}</td>
+                            <td height="40px">${product.paperNumber!''}</td>
+                        <#else>
+                            <td height="40px">${product_index+1!''}</td>
+                            <td height="40px">${product.name!''}</td>
+                            <td height="40px">${product.standardProductTypeName!''}</td>
+                            <td height="40px">${product.sizeTypeName!''}</td>
+                            <td height="40px">${product.displayLengthInMm!''}</td>
+                            <td height="40px">${product.displayWidthInMm!''}</td>
+                            <td height="40px">${product.displayHeightInMm!''}</td>
+                            <td height="40px">${product.edgeValue!''}</td>
+                            <td height="40px">${product.paperNumber!''}</td>
+                        </#if>
+                        <#if product.paperNumber == "1层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                        <#elseif product.paperNumber == "3层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        <#elseif product.paperNumber == "4层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.linerPaperTwo!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        <#elseif product.paperNumber == "5层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.corrugatedPaper!''}</td>
+                            <td height="40px">${product.edgeTwo!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        <#else>
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.linerPaperTwo!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.corrugatedPaper!''}</td>
+                            <td height="40px">${product.edgeTwo!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        </#if>
+                        <td height="40px">胶印</td>
+                        <td height="40px">${product.printTypeNameAndTechnology!''}</td>
+
+
+                        <td height="40px">${product.number!''}</td>
+                        <td height="40px">${product.stepwise01!''}</td>
+
+
+                        <td height="40px">${product.startingFee!''}</td>
+
+
+                        <#if product.mouldPriceShow == "1">
+                            <td height="40px">${product.mouldPrice!''}</td>
+                        </#if>
+                        <#if product.weightShow == "暂时不显示了">
+                            <td height="40px">${product.boxWeight!''}</td>
+                        </#if>
+                        <#if product.sidePressureShow == "1">
+                            <td height="40px">${product.sidePressure!''}N/m</td>
+                        </#if>
+                        <#if product.burstingShow == "1">
+                            <td height="40px">${product.bursting!''}Kpa</td>
+                        </#if>
+                        <#if product.knifeVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.knifeVersionFee!''}</td>
+                        </#if>
+                        <#if product.printVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.printVersionFee!''}</td>
+                        </#if>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </#if>
+        <#else>
+        <div class="pageNext">
+        </div>
+        <#if product.printType == "2">
+        <div class="offerTableWraper">
+            <table class="offerTable">
+                <thead>
+                <tr>
+                    <th rowspan="2" class="offerTable_index">序号</th>
+                    <th rowspan="2" class="offerTable_boxName">纸箱名称</th>
+                    <th rowspan="2" class="offerTable_boxType">箱型</th>
+                    <th colspan="5" class="offerTable_spec">纸箱规格（mm）</th>
+                    <th rowspan="2" class="offerTable_layer">层数</th>
+                    <th colspan="${product.paperNumber?substring(0,1)}" class="offerTable_material">配材克重</th>
+                    <th rowspan="2" class="offerTable_layer">印刷方式</th>
+                    <th rowspan="2" class="offerTable_surface">工艺</th>
+                    <th colspan="${product.priceNumber!''}" class="offerTable_offer">报价(元/每个)</th>
+                    <#if product.mouldPriceShow == "1">
+                    <th rowspan="2" class="offerTable_mould">印模费用</th>
+                    </#if>
+                    <#if product.weightShow == "暂时不显示了">
+                    <th rowspan="2" class="offerTable_boxWeight">纸箱重量</th>
+                    </#if>
+                    <#if product.sidePressureShow == "1">
+                    <th rowspan="2" class="offerTable_sidePressure">边压强度</th>
+                    </#if>
+                    <#if product.burstingShow == "1">
+                    <th rowspan="2" class="offerTable_bursting">耐破强度</th>
+                    </#if>
+                    <#if product.knifeVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">刀版费</th>
+                    </#if>
+                    <#if product.printVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">印版费</th>
+                    </#if>
+                </tr>
+                <tr>
+                    <th>口径</th>
+                    <th>长度</th>
+                    <th>宽度</th>
+                    <th>高度</th>
+                    <th>楞型</th>
+                    <#if product.paperNumber == "3层">
+                        <th>面纸</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                    <#elseif product.paperNumber == "4层">
+                        <th>面纸1</th>
+                        <th>面纸2</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                     <#elseif product.paperNumber == "5层">
+                         <th>面纸</th>
+                         <th>瓦楞1</th>
+                         <th>夹层纸</th>
+                         <th>瓦楞2</th>
+                         <th>里纸</th>
+                         <#else>
+                             <th>面纸1</th>
+                             <th>面纸2</th>
+                             <th>瓦楞1</th>
+                             <th>夹层纸</th>
+                             <th>瓦楞2</th>
+                             <th>里纸</th>
+                         </#if>
+                    <#if product.stepwise01Show == "1">
+                        <#if product.stepwise01Label??>
+                            <th>${product.stepwise01Label!''}</th>
+                            <#else>
+                                <th>3000-4999</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise02Show == "1">
+                        <#if product.stepwise02Label??>
+                            <th>${product.stepwise02Label!''}</th>
+                            <#else>
+                                <th>5000-9999</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise03Show == "1">
+                        <#if product.stepwise03Label??>
+                            <th>${product.stepwise03Label!''}</th>
+                            <#else>
+                                <th>10000-19999</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise04Show == "1">
+                        <#if product.stepwise04Label??>
+                            <th>${product.stepwise04Label!''}</th>
+                            <#else>
+                                <th>20000以上</th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise05Show == "1">
+                        <#if product.stepwise05Label??>
+                            <th>${product.stepwise05Label!''}</th>
+                            <#else>
+                                <th></th>
+                        </#if>
+                    </#if>
+                    <#if product.stepwise06Show == "1">
+                        <#if product.stepwise06Label??>
+                            <th>${product.stepwise06Label!''}</th>
+                            <#else>
+                                <th></th>
+                        </#if>
+                    </#if>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td height="40px">${product_index+1!''}</td>
+                        <td height="40px">${product.name!''}</td>
+                        <td height="40px">${product.standardProductTypeName!''}</td>
+                        <td height="40px">${product.sizeTypeName!''}</td>
+                        <td height="40px">${product.displayLengthInMm!''}</td>
+                        <td height="40px">${product.displayWidthInMm!''}</td>
+                        <td height="40px">${product.displayHeightInMm!''}</td>
+                        <td height="40px">${product.edgeValue!''}</td>
+                        <td height="40px">${product.paperNumber!''}</td>
+                        <#if product.paperNumber == "3层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                            <#elseif product.paperNumber == "4层">
+                                <td height="40px">${product.linerPaper!''}</td>
+                                <td height="40px">${product.linerPaperTwo!''}</td>
+                                <td height="40px">${product.edgeOne!''}</td>
+                                <td height="40px">${product.insidePaper!''}</td>
+                                <#elseif product.paperNumber == "5层">
+                                    <td height="40px">${product.linerPaper!''}</td>
+                                    <td height="40px">${product.edgeOne!''}</td>
+                                    <td height="40px">${product.corrugatedPaper!''}</td>
+                                    <td height="40px">${product.edgeTwo!''}</td>
+                                    <td height="40px">${product.insidePaper!''}</td>
+                                    <#else>
+                                        <td height="40px">${product.linerPaper!''}</td>
+                                        <td height="40px">${product.linerPaperTwo!''}</td>
+                                        <td height="40px">${product.edgeOne!''}</td>
+                                        <td height="40px">${product.corrugatedPaper!''}</td>
+                                        <td height="40px">${product.edgeTwo!''}</td>
+                                        <td height="40px">${product.insidePaper!''}</td>
+                        </#if>
+                        <td height="40px">水印</td>
+                        <td height="40px">${product.printTypeNameAndTechnology!''}</td>
+
+                        <#if product.stepwise01Show == "1">
+                            <td height="40px">${product.stepwise01!''}</td>
+                        </#if>
+                        <#if product.stepwise02Show == "1">
+                            <td height="40px">${product.stepwise02!''}</td>
+                        </#if>
+                        <#if product.stepwise03Show == "1">
+                            <td height="40px">${product.stepwise03!''}</td>
+                        </#if>
+                        <#if product.stepwise04Show == "1">
+                            <td height="40px">${product.stepwise04!''}</td>
+                        </#if>
+                        <#if product.stepwise05Show == "1">
+                            <td height="40px">${product.stepwise05!''}</td>
+                        </#if>
+                        <#if product.stepwise06Show == "1">
+                            <td height="40px">${product.stepwise06!''}</td>
+                        </#if>
+                        <#if product.mouldPriceShow == "1">
+                            <td height="40px">${product.mouldPrice!''}</td>
+                        </#if>
+                        <#if product.weightShow == "暂时不显示了">
+                            <td height="40px">${product.boxWeight!''}</td>
+                        </#if>
+                        <#if product.sidePressureShow == "1">
+                            <td height="40px">${product.sidePressure!''}N/m</td>
+                        </#if>
+                        <#if product.burstingShow == "1">
+                            <td height="40px">${product.bursting!''}Kpa</td>
+                        </#if>
+                        <#if product.knifeVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.knifeVersionFee!''}</td>
+                        </#if>
+                        <#if product.printVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.printVersionFee!''}</td>
+                        </#if>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <#else>
+        <div class="offerTableWraper">
+            <table class="offerTable">
+                <thead>
+                <tr>
+                    <th rowspan="2" class="offerTable_index">序号</th>
+                    <th rowspan="2" class="offerTable_boxName">纸箱名称</th>
+                    <th rowspan="2" class="offerTable_boxType">箱型</th>
+                    <#if product.paperNumber == "1层">
+                        <th colspan="3" class="offerTable_spec">纸箱规格（mm）</th>
+                    <#else>
+                        <th colspan="5" class="offerTable_spec">纸箱规格（mm）</th>
+                    </#if>
+                    <th rowspan="2" class="offerTable_layer">层数</th>
+                    <th colspan="${product.paperNumber?substring(0,1)}" class="offerTable_material">配材克重</th>
+                    <th rowspan="2" class="offerTable_layer">印刷方式</th>
+                    <th rowspan="2" class="offerTable_surface">工艺</th>
+                    <th rowspan="2" class="offerTable_number">数量</th>
+                    <th colspan="2" class="offerTable_offer1">报价(元/每个)</th>
+                    <#if product.mouldPriceShow == "1">
+                    <th rowspan="2" class="offerTable_mould">印模费用</th>
+                    </#if>
+                    <#if product.weightShow == "暂时不显示了">
+                    <th rowspan="2" class="offerTable_boxWeight">纸箱重量</th>
+                    </#if>
+                    <#if product.sidePressureShow == "1">
+                    <th rowspan="2" class="offerTable_sidePressure">边压强度</th>
+                    </#if>
+                    <#if product.burstingShow == "1">
+                    <th rowspan="2" class="offerTable_bursting">耐破强度</th>
+                    </#if>
+                    <#if product.knifeVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">刀版费</th>
+                    </#if>
+                    <#if product.printVersionFeeShow == "暂时不显示">
+                    <th rowspan="2" class="offerTable_bursting">印版费</th>
+                    </#if>
+                </tr>
+                <tr>
+                    <#if product.paperNumber == "1层">
+                        <th>长度</th>
+                        <th>宽度</th>
+                        <th>高度</th>
+                    <#else>
+                        <th>口径</th>
+                        <th>长度</th>
+                        <th>宽度</th>
+                        <th>高度</th>
+                        <th>楞型</th>
+                    </#if>
+                    <#if product.paperNumber == "1层">
+                        <th>面纸</th>
+                    <#elseif product.paperNumber == "3层">
+                        <th>面纸</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                    <#elseif product.paperNumber == "4层">
+                        <th>面纸1</th>
+                        <th>面纸2</th>
+                        <th>瓦楞</th>
+                        <th>里纸</th>
+                     <#elseif product.paperNumber == "5层">
+                         <th>面纸</th>
+                         <th>瓦楞1</th>
+                         <th>夹层纸</th>
+                         <th>瓦楞2</th>
+                         <th>里纸</th>
+                     <#else>
+                         <th>面纸1</th>
+                         <th>面纸2</th>
+                         <th>瓦楞1</th>
+                         <th>夹层纸</th>
+                         <th>瓦楞2</th>
+                         <th>里纸</th>
+                     </#if>
+                        <th>单个纸箱</th>
+                        <th>开机费</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <#if product.paperNumber == "1层">
+                            <td height="40px">${product_index+1!''}</td>
+                            <td height="40px">${product.name!''}</td>
+                            <td height="40px">${product.standardProductTypeName!''}</td>
+                            <td height="40px">${product.displayLengthInMm!''}</td>
+                            <td height="40px">${product.displayWidthInMm!''}</td>
+                            <td height="40px">${product.displayHeightInMm!''}</td>
+                            <td height="40px">${product.paperNumber!''}</td>
+                            <#else>
+                            <td height="40px">${product_index+1!''}</td>
+                            <td height="40px">${product.name!''}</td>
+                            <td height="40px">${product.standardProductTypeName!''}</td>
+                            <td height="40px">${product.sizeTypeName!''}</td>
+                            <td height="40px">${product.displayLengthInMm!''}</td>
+                            <td height="40px">${product.displayWidthInMm!''}</td>
+                            <td height="40px">${product.displayHeightInMm!''}</td>
+                            <td height="40px">${product.edgeValue!''}</td>
+                            <td height="40px">${product.paperNumber!''}</td>
+                        </#if>
+                        <#if product.paperNumber == "1层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                        <#elseif product.paperNumber == "3层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        <#elseif product.paperNumber == "4层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.linerPaperTwo!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        <#elseif product.paperNumber == "5层">
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.corrugatedPaper!''}</td>
+                            <td height="40px">${product.edgeTwo!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        <#else>
+                            <td height="40px">${product.linerPaper!''}</td>
+                            <td height="40px">${product.linerPaperTwo!''}</td>
+                            <td height="40px">${product.edgeOne!''}</td>
+                            <td height="40px">${product.corrugatedPaper!''}</td>
+                            <td height="40px">${product.edgeTwo!''}</td>
+                            <td height="40px">${product.insidePaper!''}</td>
+                        </#if>
+                        <td height="40px">胶印</td>
+                        <td height="40px">${product.printTypeNameAndTechnology!''}</td>
+
+
+                        <td height="40px">${product.number!''}</td>
+                        <td height="40px">${product.stepwise01!''}</td>
+
+
+                        <td height="40px">${product.startingFee!''}</td>
+
+
+                        <#if product.mouldPriceShow == "1">
+                            <td height="40px">${product.mouldPrice!''}</td>
+                        </#if>
+                        <#if product.weightShow == "暂时不显示了">
+                            <td height="40px">${product.boxWeight!''}</td>
+                        </#if>
+                        <#if product.sidePressureShow == "1">
+                            <td height="40px">${product.sidePressure!''}N/m</td>
+                        </#if>
+                        <#if product.burstingShow == "1">
+                            <td height="40px">${product.bursting!''}Kpa</td>
+                        </#if>
+                        <#if product.knifeVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.knifeVersionFee!''}</td>
+                        </#if>
+                        <#if product.printVersionFeeShow == "暂时不显示">
+                            <td height="40px">${product.printVersionFee!''}</td>
+                        </#if>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </#if>
+        </#if>
+
+        </#list>
+
+</div>
+
+
+
+
+<div class="offerProdWraper">
+
+    <#if (Warehouse.quotationDescriptionPOJOS?size>0)>
+    <div class="explainWraper">
+        <strong>报价说明：</strong>	<br/>
+        <#list Warehouse.quotationDescriptionPOJOS as description>
+            <span height="20px">${description_index+1!''}、&nbsp;&nbsp;${description.descriptionValue!''}</span><br/>
+        </#list>
+    </div>
+    </#if>
+</div>
+<div style="padding-bottom: 10px;padding-top: 10px">
+    <li class="phone"><p style="display:inline-block;">企业服务电话：</p><span>400-6366-310</span></li>
+</div>
+</#list>
+</body>
+</html>

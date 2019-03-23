@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.label-container {
+    margin-bottom: 5px;
+}
+.label-container span {
+    margin: 0 5px 0 5px;
+}
+.label-container button {
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    color: deepskyblue;
+    outline: none;
+    background-color: transparent;
+}
+.formulaDetail {
+    width: 100%;
+}
+.formulaTable {
+    width: 100%;
+    min-height: 300px;
+    border: black solid 1px;
+}
+.addTable {
+    width: 20px;
+    height: 20px;
+    background-color: deepskyblue;
+    border-radius: 15px;
+    outline: none;
+}
+.table{
+    width: auto;
+    margin-bottom: 20px;
+    border-collapse:collapse;
+}
+
+.rightTable {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.table td,.table th{
+    border: 1px solid silver;
+}
+.table caption {
+    border: 1px solid silver;
+    border-bottom: none;
+}
+.table caption input {
+    text-align: center;
+}
+.table thead input {
+    text-align: center;
+}
+h2.title{padding:5px 0px; text-align: center;}
+.rightTable span{width:20px; height:20px; line-height:20px;background:silver; border-radius: 50%; text-align: center;}
+/*table{margin:100px; border-collapse: collapse;}*/
+/*table td, table th{padding:5px; border:1px solid #ccc;}*/
+table.rightTable thead th,table.rightTable tbody td{position: relative;}
+table.rightTable thead th span{position:absolute; right:-10px; top:-20px; display: none;}
+table.rightTable tbody td span{position: absolute; left:-20px; bottom:-10px; display: none;}
+
+.node {
+    border-radius: 3px;
+    padding: 0 1px 0 1px;
+    color: #fff;
+    display: inline-block;
+    width: auto;
+}
+
+.keyword .node {
+    cursor: pointer;
+}
+
+.exp {
+    display: inline-block;
+    min-height: 15px;
+    min-width: 60px;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}

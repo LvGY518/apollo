@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"></meta>
+	<style type="text/css">
+		 @page {
+            size: 210mm 297mm;
+        }
+        table,div,th,div,thead,tbody,tfoot,p,span{
+            margin:0px;
+            padding:0px;
+            border:none;
+            font-size:10.5pt;
+            font-weight:400;
+            font-style:normal;
+            text-decoration:none;
+            font-family:Microsoft YaHei;
+            mso-generic-font-family:auto;
+            mso-font-charset:134;
+            mso-number-format:"\@";
+        }
+        div,span{
+            font-weight:lighter;
+        }
+         .contractTemp{
+            font-family: Microsoft YaHei;
+            font-size:10.5pt;
+            text-align: left;
+            color:#000000;
+            line-height:24pt;
+            font-weight:100;
+        }
+		 .pageNext{
+			 page-break-after: always;
+		 }
+        .enFont{
+            font-family: "times new roman";
+            font-size:10.5pt;
+        }
+        .pageHeader{
+            font-family: Microsoft YaHei;
+            font-size:14pt;
+            text-align: center;
+            color:#808080;
+        }
+        .pageFooter{
+            font-family: "times new roman";
+            font-size:10.5pt;
+            overflow:hidden;
+            width:100%;
+            color:#808080;
+            line-height: normal;
+        }
+		 .pageFooter .footer_right{
+			 width: 50%;
+			 text-align: right;
+			 float: right;
+		 }
+		 .pageFooter .footer_left{
+			 width: 50%;
+			 float: left;
+		 }
+         .row{
+            width:100%;
+            display: table;
+            content: '';
+            clear: both;
+        }
+        .grid{
+            float: left;
+        }
+        .index_td{
+            width: 8%;
+            text-indent: 20pt;
+        }
+        .con_td{
+            width: 92%;
+        }
+        .contract_money{
+        	width: 100pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .contract_money_capital{
+        	width: 120pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .bankInfo{
+            padding-left:22pt;
+        }
+        .hasBtmBorder{
+        	border-bottom:1px solid #000000;
+        }
+        .deliveryInfo_lable{
+        	display: inline-block;
+        	width:54pt;
+        	padding-left:20pt;
+        }
+        .deliveryInfo{
+        	width:120pt;
+        	display: inline-block;
+        }
+        .contract_party{
+            padding-top:20pt;
+        }
+        .contract_partyA{
+            width:50%;
+        }
+        .contract_partyB{
+            width:50%;
+        }
+        .addressLabel{
+            width:26%;
+            display: block;
+            float: left;
+        }
+        .addressValue{
+            width:74%;
+            display: block;
+            float: left;
+        }
+		.fp{
+			padding-left: 20pt;
+		}
+		 .date{
+			 display: inline-block;
+			 width:34pt;
+		 }
+		 .tableStyle table{
+			 border-collapse:collapse;
+		 }
+        .tableStyle td{
+			border:1px solid #000;
+			padding:2px 4px;
+			text-align: center;
+		}
+		 .tableStyle td.textRight{
+			text-align: right;
+		}
+		 .tableStyle td.textLeft{
+			text-align: left;
+		}
+		.page1{
+			width:100%;
+			height:30px;
+			position: absolute;
+			top:270mm;
+			left:0;
+		}
+		.td_1{width:4%; max-width:3%;}
+	 	.td_2{width:11%; max-width:11%;}
+	 	.td_3{width:11%; max-width:11%;}
+	 	.td_4{width:5%; max-width:5%;}
+	 	.td_5{width:5%; max-width:5%;}
+	 	.td_6{width:5%; max-width:5%;}
+	 	.td_7{width:7%; max-width:7%; word-break:break-all; }
+	 	.td_8{width:7%; max-width:7%; word-break:break-all;}
+	 	.td_9{width:7%; max-width:7%;}
+	 	.td_10{width:7%; max-width:7%;}
+	 	.td_11{width:7%; max-width:7%;}
+	 	.td_12{width:6%; max-width:6%;}
+	 	.td_13{width:6%; max-width:6%;}
+	 	.td_14{width:6%; max-width:6%;}
+	 	.td_15{width:6%; max-width:6%;}
+
+	</style>
+</head>
+<body>
+	<div class="contractTemp">
+		<div  class="row">
+			<div class="pageHeader">一撕得包装物销售合同</div>
+		</div>
+		<div  class="row partyA">
+			<div>甲方 ：<span>${name!''}</span></div>
+		</div>
+		<div  class="row partyB">
+			<div>通讯地址 ：<span>${address!''}</span></div>
+		</div>
+		<div  class="row partyB">
+			<div>联系电话 ：<span>${phone!''}</span></div>
+		</div>
+		<br/>
+		<div  class="row partyB">
+			<div>乙方 ：<span>${supplierName!''}</span></div>
+		</div>
+		<div  class="row partyB">
+			<div>通讯地址 ：<span>${supplierAddress!''}</span></div>
+		</div>
+		<div  class="row partyB">
+			<div>联系电话 ：<span>${supplierPhone!''}</span></div>
+		</div>
+		<br/>
+		<div class="row">
+			<div>
+				<span>
+					鉴于甲乙双方本着互惠互利、共同发展的原则，在平等自愿的基础上，对包括且不限于彩印包装产品的制造及供应等基本事项，达成战略合作意向，并签订如下合同：
+				</span>
+			</div>
+		</div>
+		<div class="row">
+			<div>第一条	战略合作范围</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">乙方同意作为甲方在全国范围内的包括且不限于 胶印瓦楞箱、标签、彩盒、手提袋、精品灰板盒等彩印包装制品的主要战略合作伙伴和甲方长期友好透明合作。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">乙方同意开放乙方的报价模板，与甲方共同确认成本计价方式，并以最优价格提供给甲方所需的产品。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">乙方同意与甲方进行新技术的分享与知识的培训。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">甲方同意在全国范围内等产品优先选择乙方进行供货。（针对战略型供应商）
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">5</span>、</div>
+			<div class="con_td grid">乙方同意在同等情况下优先保障甲方打样与供货需求。（针对战略型供应商）
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">6</span>、</div>
+			<div class="con_td grid">甲乙双方同意互不争取对方的现有客户，如有冲突，应事先取得对方的同意与认可。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">7</span>、</div>
+			<div class="con_td grid">甲乙双方同意在条件合适的情况下可以在资本层面进行合作。（针对战略型供应商）
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div>第二条 委托加工内容
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont"></span></div>
+			<div class="con_td grid">甲方委托乙方按照甲方指定的规格﹑式样、材质、工艺等要求生产包装物产品并供应给甲方，乙方应诚实履行本合同，以此谋求甲乙双方的发展及利益。
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div>第三条 订货合同的成立
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont"></span></div>
+			<div class="con_td grid">在签订本合同的基础上，甲乙双方签订《波塞冬平台服务协议》，甲方按批次在波塞冬平台向乙方发送《一撕得采购订单》，载明订货年月日﹑产品名称﹑规格﹑材质与工艺要求﹑数量﹑交货期限﹑交货地点及其他必要事项，乙方接受订单并书面通知甲方同意生产及供货时，订货合同成立。如乙方对甲方发出的供货订单有任何修改，则需经过甲方书面确认后，订货合同方能成立。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第四条	产品价格
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">甲乙双方协商确定各品类的计价模板及计价标准，并盖章确认。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">甲方根据双方确定的计价模板确认每单产品的价格，并在甲方下达的的订单中执行。在双方合作过程中如有未尽事宜，经双方协商，签订《价格补充协议》，并依最新版本执行。对于不能确定价格模板的产品价格，须经甲方书面确认。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">对于双方确认的大客户，价格、质量以及服务条款双方另行商议，其它客户依据本合同约定。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">每批次的产品单价以双方确认的采购订单为准，经双方确认的单个产品价格均为固定单价，该价格包括但不限于材料费和加工费、运费（运输费、运输保险费和装卸费用）、税费、其他版费、合理利润等因乙方依本合同约定履行了全部义务后适用的总价格，在合同履行过程中，如果乙方未完全履行合同义务或履行的合同义务不符合约定的，则未履行或履行不符合合同约定的内容所对应的价款应当从上述约定的价格中扣除。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">5</span>、</div>
+			<div class="con_td grid">合同期内如上游原材料市场价格波动涨幅超过本合同签订之时原材料市场价格的5%时，乙方可与甲方协商是否对本合同项下产品的单价进行调整，但乙方需提供价格变动依据，且经甲方书面确认后方可变更产品单价；合同期内如上游原材料市场价格波动降幅超过本合同签订之时原材料市场价格的5%时，甲方有权相应调整本合同项下所有产品的单价。
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">6</span>、</div>
+			<div class="con_td grid">每批次产品的最终结算金额以乙方根据双方在波塞冬平台书面确认的对账单开出的增值税发票所列示的金额为准。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">7</span>、</div>
+			<div class="con_td grid">在生产每批次新品时，原则上由乙方报价时，应拆分刀版费和印版费等其他版费。若乙方新品报价未含版费，且三个月内生产量未达到双方约定数量时，乙方提出对账申请，甲方需要按照该产品所发生的实际刀版、印版费用成本加入到当月对账单，进行支付；若乙方新品报价已经包含相应版费，则在第二次返单时产品单价应扣除相应版费。所有相应版费，乙方均需提供相应费用凭证给甲方。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">8</span>、</div>
+			<div class="con_td grid">由甲方支付的刀版费及印版费，乙方应在交货量达到双方约定数量时，在双方对账时予以扣除。乙方应主动在双方对账时对同规格的版费予以免除。
+			</div>
+		</div>
+	    <br/>
+		<br/>
+		<div class="row">
+			<div>第五条	打样服务
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">乙方提供样品需符合《一撕得彩盒质量标准2017年第一版》（见附件四），如有超出此范围的质量标准，应该以甲方书面邮件要求为准。如有质量问题，甲方不予支付打样费用。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">乙方打样出现延期交付或质量问题，甲方有权依据《一撕得供应商日常管理制度》（见附件三）进行处罚，如多次出现延期交付或质量问题，甲方有权终止合作。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">打样收费标准依据双方盖章确认的订单执行，如打样产品形成大货订单，则将打样费用在货款中予以扣除。
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div>第六条	订货及交货期限
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">甲方按批次通过波塞冬平台向乙方发送《一撕得采购订单》，载明订货年月日﹑产品名称﹑规格﹑材质与工艺要求﹑数量﹑交货期限﹑交货地点及其他必要事项，乙方通过波塞冬平台接受订单并确认生产及供货。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">乙方按照订单规定的交货时间﹑地点向甲方供货。标准交货时间为：首单 ${firstDeliveryQuantity!''} 天，返单 ${backDeliveryQuantity!''} 天。如果甲方要求分期交货订单，乙方应确保提前备货。若可能发生延期交货时，乙方应在工厂出库日三天前将有关情况通报甲方，经甲方同意后方可延迟交货，如违反该规定，乙方同意每日按该批次货款 5% 支付甲方的延期补偿金。如因乙方原因，比约定时间延期交货超过10天，则甲方有权取消该批次订单并拒绝收货，且乙方应按当批次订单总货款的2倍向甲方支付违约金，并赔偿因延迟交付货物给甲方带来的业务损失。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">如乙方在接受甲方订单后，未经甲方同意，无故不完成甲方要求的订单数量或产品未达到甲方的验收标准，则甲方有权拒绝收货，且乙方应当按照未交货产品相应货款的2倍向甲方支付违约金，并赔偿因此给甲方造成的所有损失，验收标准以甲方确认的样品和提供的产品技术标准文件为准。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">除不可抗力原因外，乙方不可无故拒绝甲方指派订单，否则甲方有权要求乙方支付该批次订单货款总额30%的违约金。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">5</span>、</div>
+			<div class="con_td grid">如某特定原辅材料由甲方提供，因甲方原因未能及时供应该特定的原辅材料导致乙方不能及时履行本合同义务时，甲方免除乙方因此而发生的该批次货物延期送货违约金，新的交期则按照乙方收到原辅料的时间进行顺延。 </div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div>第七条	送货服务
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">乙方在发出产品时，需满足以下包装要求：
+				1)	使用适宜运输的包装方式，该产品以及包装外，无需印刷任何内容，并且不得含有透露乙方任何信息的印刷字样或人工填写的内容，如有违反，乙方同意每次按照该批次产品对应的订单总额的10%支付甲方罚款。对于由于包装不良所发生的损失及由于采用不充分或不妥善的防护措施而造成的任何损毁，乙方应承担由此而产生的一切费用和全部损失。
+				2)  如有产品需要包装送货外，产品包装外需张贴《一撕得产品标签》，标签内容需打印填写完整。</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">乙方应依据《一撕得采购订单》所规定的交货日期在甲方指定的地点安全交付产品，相关送货费用如下：
+				1)	将产品从乙方工厂送至甲方指定的客户所在地，乙方负责所有包装、运输与装卸费用，该费用包含在产品报价中；
+				2)	因为产品质量问题造成的退换货往返费用，由乙方全部承担。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">乙方在送货过程中应遵从《一撕得产品送货服务标准》及以下约定：
+				1)	乙方每批次货物以及打样出货前，需按照甲方确认的样品和提供的产品技术标准文件进行检测，并出具《一撕得包装产品出库质量评定单》，并提交甲方审阅备案，甲方在确认《一撕得包装产品出库质量评定单》所记录的信息无误且符合甲方质量标准后，向乙方以电子邮件方式确认可发出货物。
+				2)	乙方应根据甲方安排的交货时间主动与收货人员预约收货时间，态度诚恳端正，不得有不礼貌或不耐烦情形，保持沟通顺畅。如与收货方发生争执引起客户投诉，每次罚款200元，如发生肢体冲突，每次罚款5000元并全额承担收货方索赔。
+				3)	根据上述条款规定交货时，随货同行的送货单据按照甲方制定的式样进行填写；不得使用带有乙方公司名称的送货单据进行送货，否则甲方有权不予认可乙方提供的送货单据。每出现一次未按要求写的送货标识，送货单的情况，将扣除当批货款的5%作为处罚；如果送货单出现供应商信息，价格等敏感信息，将扣除当批货款的10%作为处罚。
+				4)	货物送达甲方指定的地址，应遵守收货方相应的管理制度并严格听从交货安排；交货后，送货人员需将收货人员签字确认的《一撕得产品送货单》（以波塞冬平台应用版本为准）带回，上述单据原件送回甲方作货款结算依据。
+				5)	乙方需在次日将上述经客户签署确认的送货单据扫描后上传波塞冬平台。如乙方采用物流送货，需在当日将发货清单及物流单据上传波塞冬平台。如果月底前送货单据未能及时上传系统，那么当月不与对账，由此产生的一切后果，则由乙方负责。
+				6)	乙方应严格控制安全库存，如有未按照交期交货的成品，库存数量应每月按期告知甲方，因乙方管理原因造成呆滞存或乙方未在本协议约定期限内书面通知甲方呆滞库存情况的，甲方不予支付该批次货物货款，且由乙方自行承担相应损失。
+				7)	乙方承担货物运输过程中的所有责任、风险及费用，货物交付给甲方并经甲方指定人员书面签收确认后，货物的所有权以及货物损毁、灭失的风险转移给甲方。
+				8)  如各别客户对送货服务有特殊要求，甲乙双方另行签订针对该客户的送货服务标准并执行。</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div>第八条	质量要求与验收标准
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">乙方提供的产品应符合甲方确认的样品以及国家、行业标准和乙方出厂的质量标准，如甲方提供甲方企业标准，经双方确认后，乙方产品应符合甲方企业标准并严格执行。甲方收货时按以上标准验收和收货。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">乙方不得随意更换产品原材料等，如乙方需要变更产品的原材料规格、品牌或相关技术标准，需提前向甲方提交书面申请并获得甲方书面同意，否则甲方可拒收未按约定标准生产的货物，并追究因此造成的业务损失。未经甲方许可，擅自变更产品材料，一经发现，处以送货金额10%的罚款，并计入供应商诚信考核，发现第二次，取消供应商资格。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">乙方交货如验收不合格，或客户反馈产品使用过程中有质量问题，乙方应在第一时间查找并分析原因，提供相关信息和分析报告给一撕得，并根据客户要求进行退货、换货或打折处理，同时在一周内提交质量改善方案给甲方。如由于乙方交付的产品不符合验收标准，造成甲方的直接业务损失，乙方需进行相关赔偿，赔偿金额甲乙双方协商确定，最多不超过乙方销售产品金额的三倍，同时对于当笔订单，甲方将追加5%的罚款。 
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">甲方的检测结果不能免除乙方产品在使用过程中发现的质量问题。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">5</span>、</div>
+			<div class="con_td grid">乙方对不合格产品严禁发出，应严格分区管理并按乙方内部管理流程及时报废。
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div>第九条	结算条款
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">采购货款结算时间为月结60天。每月26日前甲乙双方就上月26日至本月25日之间完成交货的产品在波塞冬平台上进行对账，对账单中包含当月的奖励和处罚项，经甲方核对并确认账款后，开具与对帐单货款金额一致的全额增值税专用发票，连同截止本月25日所有经客户签收的《一撕得送货单》寄至甲方，甲方核对无误后，按照发票金额到期时以银行汇款方式予以支付。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">甲方开票信息
+				名称： ${name!''}
+				纳税人识别号：  ${TaxPayerId!''}
+				地址、电话：  ${address!''}  ${phone!''}
+				开户行及账号： ${depositBankAndAccount!''}
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">乙方指定收款账号：${bankAccount!''}
+				户名： ${accountName!''}
+				开户行： ${depositBank!''}
+				账号：${account!''}
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">甲方未按照合同约定时间支付相关货款，则视为延迟履行合同，迟延一天按照该批次货款未支付部分的同期银行贷款基准利率支付乙方迟延履行利息。
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div>第十条	结算条款
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">一撕得拉链箱包装物产品为甲方所设计开发的国家专利产品，甲方拥有该专利产品相关合法权益。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">乙方接受甲方委托生产一撕得拉链箱产品时，部分指定原、辅材料由甲方直接供应，除非甲方书面授权同意，否则乙方不得从任何第三方采购此类甲方特供的原、辅材料，如有违约，则为侵犯甲方知识产权，按侵权金额十倍赔偿甲方损失。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">除非甲方书面授权同意，否则乙方不得向第三方设计、生产和销售任何侵害“一撕得拉链箱”专利权的产品，如有违约，则为侵犯甲方知识产权，按侵权金额十倍赔偿甲方损失。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">在开发、生产、销售“一撕得包装物产品”的过程中，甲乙双方或单独共同获得的与一撕得包装物产品相关的任何技术改进、成本降低、技术创新等方面的知识产权，均归属甲方所有，乙方不就此类成果申请任何专利权，亦不向第三方泄露此类信息以获得经济利益。如有侵犯，按侵权金额十倍赔偿甲方损失。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">5</span>、</div>
+			<div class="con_td grid">除非甲方书面同意，乙方承诺不为其它模仿和抄袭一撕得产品的任何第三方生产和加工与一撕得专利产品类似的包装物，如有违约，乙方按发生金额五倍赔偿甲方损失。
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="row">
+			<div>第十一条	保密
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">甲方或乙方，不得将通过本采购合同及订货合同获知的业务或技术上的秘密泄漏给第三方，但与政府部门有关等不得已情形时除外。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">未经甲方书面同意，乙方不得私自与甲方客户直接发生业务关系，在与甲方合作前已存在业务关系的客户除外。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">未经甲方同意，乙方不得接待甲方的客户访厂和业务需求，否则视为重大诚信违约。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">如有违反，按照双方签订的《保密协议》执行相关措施。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第十二条	合同效力及期限
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">本合同自双方签订之日起生效，合同有效期为一年。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">在双方往来业务中，与履行本合同相关的协议、合同、传真、订单、图表、信函、电子邮件等均为本合同的有效附件，对双方具有约束力，但与本合同冲突时应以本合同为准。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第十三条合同解除
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">甲方或乙方在对方违反本采购合同或订货合同时，经书面催告对方后十五日内违约事项未得到改正的，可解除本采购合同或订货合同的全部或部分条款；
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">如因乙方原因需提前解除合同，乙方应至少提前两个月通知甲方，并确保在此期间的正常接单与供货。如未事先通知甲方并经甲方同意，而乙方擅自终止合作，乙方应按双方上月交易总额赔偿甲方损失。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">甲方或乙方因战争、自然灾害等不得已情形被认为难以履行合同时，可与对方协商解除本采购合同及订货合同的全部或部分条款。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第十四条  合同终止后的措施
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">甲方或乙方，在合同解除后，应立即返还从对方得到的图纸﹑规格书﹑式样书﹑图纸化的信息及制造技术等资料及相关的刀版和印刷版等；
+ 			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">本采购合同及订货合同期满或解除后，第九条所规定的内容依然生效；
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">双方合同解除后，不免除乙方对已交货物的质量责任。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第十五条  争议解决
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">甲乙双方有责任履行经双方确认的以上各条款，一方违约，须负相应的违约责任。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">对于就本采购合同或采购订单的条款发生异议或未在合同中规定的其他事项，以及双方在合同执行过程中产生的争议，由甲乙双方依据商业惯例协商解决。双方不能达成协议时，申诉方可提请合同签定地点所在地有管辖权的人民法院依据国家相关法律审理。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第十六条  其他
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">本合同一式两份，甲乙双方签字盖章后各执一份。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">本协议有效期一年，自 ${companyStartDateY!''} 年  ${companyStartDateM!''}  月  ${companyStartDateD!''}  日至 ${companyEndDateY!''} 年  ${companyEndDateM!''}   月  ${companyEndDateD!''}  日止，经双方签字、盖章生效。合同到期后，如双方仍有业务往来的，本协议将视作自动续签。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">协议在执行过程中，任何一方认为有必要对协议作修改或补充条款，应由双方协商，经双方同意后再作修订，修订后由双方签字、盖章生效。
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">本合同附件与本合同同样合法有效。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第七条  通知条款
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">双方确认，本合同所载双方通信地址、联系电话、电子邮箱地址等均为双方在履行本合同期间的有效联系方式，并作为双方因履行本合同产生争议时，所有往来文件、法律文书（包括传票、判决书等）的送达地址。任何一方联系方式变动的，均应提前七日以书面方式通知对方，否则，由此产生的所有不利法律后果均由该方承担。
+			</div>
+		</div>
+		<br/>
+		<br/>
+
+		<div class="row">
+			<div>第十八条  合同附件：
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">1</span>、</div>
+			<div class="con_td grid">附件二：《一撕得采购订单模板》
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">2</span>、</div>
+			<div class="con_td grid">附件三：《供应商日常管理规定（2017年第一版）》
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">3</span>、</div>
+			<div class="con_td grid">附件四：《一撕得彩盒质量标准2017年第一版》
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">4</span>、</div>
+			<div class="con_td grid">附件五：《一撕得送货单》
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">5</span>、</div>
+			<div class="con_td grid">附件六：《一撕得异常整改报告》
+			</div>
+		</div>
+		<div class="row">
+			<div class="index_td grid "><span class="enFont">6</span>、</div>
+			<div class="con_td grid">附件七：《一撕得-对账单模板》
+			</div>
+		</div>
+		<br/>
+		<br/>
+		 <div  class="row contract_party">
+			<div class="grid contract_partyA">
+				<div class="addressLabel">甲方 : </div><div class="addressValue">${name!''}</div>
+			</div>
+			<div class="grid contract_partyB">
+				<div class="addressLabel">乙方 : </div><div class="addressValue">${supplierName!''}</div>
+			</div>
+		</div>
+		<div  class="row">
+			<div class="grid contract_partyA">地址 : ${address!''}<span></span></div>
+			<div class="grid contract_partyB">地址 : ${supplierAddress!''}<span></span></div>
+		</div>
+		<div  class="row">
+			<div class="grid contract_partyA">授权签约代表 : 邢凯<span></span></div>
+			<div class="grid contract_partyB">授权签约代表 : <span></span></div>
+		</div>
+		 <div  class="row">
+			<div class="grid contract_partyA">日期：<span class="date"></span>年<span class="date"></span>月<span class="date"></span>日</div>
+			<div class="grid contract_partyB">日期：<span class="date"></span>年<span class="date"></span>月<span class="date"></span>日</div>
+		</div>
+		<div  class="row">
+			<div class="grid contract_partyA">合同签约地址：${designAddress!''}<span></span></div>
+		</div>
+	</div>
+</body>
+</html>

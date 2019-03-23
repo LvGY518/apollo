@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clancey.apollo.sys.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.clancey.apollo.sys.entity.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone"/>
+        <result column="tel_phone" jdbcType="VARCHAR" property="telPhone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="sex" jdbcType="CHAR" property="sex"/>
+        <result column="type" jdbcType="CHAR" property="type"/>
+        <result column="department_id" jdbcType="VARCHAR" property="departmentId"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+        <result column="leader" jdbcType="TINYINT" property="leader"/>
+        <result column="disable" jdbcType="TINYINT" property="disable"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
+        <result column="update_user" jdbcType="VARCHAR" property="updateUser"/>
+        <result column="deleted" jdbcType="TINYINT" property="deleted"/>
+    </resultMap>
+
+    <resultMap id="proofingListMap" type="com.clancey.apollo.proofing.pojo.UserProofingPOJO">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone"/>
+        <result column="department_id" jdbcType="VARCHAR" property="departmentId"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+        <result column="leader" jdbcType="TINYINT" property="leader"/>
+    </resultMap>
+
+    <sql id="proofingListSql">
+        id as id,name as name,mobile_phone as mobilePhone,department_id as departmentId,role_id as roleId,leader as leader
+    </sql>
+
+    <select id="findListByRoleIdList" resultMap="proofingListMap">
+        SELECT
+        <include refid="proofingListSql"/>
+        from tb_sys_user
+        where deleted = 0 and disable = 0
+        and
+        <foreach collection="roleIdList" item="roleId" open="(" close=")" separator="or">
+            role_id = #{roleId}
+        </foreach>
+    </select>
+
+    <select id="findListByUserIdList" resultMap="proofingListMap">
+        SELECT
+          id as id ,name as name
+        from tb_sys_user
+        where deleted = 0 and disable = 0
+        <if test="userIdList!=null">
+            and
+            <foreach collection="userIdList" item="id" open="(" close=")" separator="or">
+                id = #{id}
+            </foreach>
+        </if>
+
+
+    </select>
+
+    <select id="selectByUserName" resultMap="BaseResultMap">
+        SELECT * FROM tb_sys_user WHERE username=#{username}
+    </select>
+</mapper>

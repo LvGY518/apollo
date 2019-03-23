@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"></meta>
+	<style type="text/css">
+		 @page {
+            size: 210mm 297mm;
+        }
+        table,div,th,div,thead,tbody,tfoot,p,span{
+            margin:0px;
+            padding:0px;
+            border:none;
+            font-size:10.5pt;
+            font-weight:400;
+            font-style:normal;
+            text-decoration:none;
+            font-family:Microsoft YaHei;
+            mso-generic-font-family:auto;
+            mso-font-charset:134;
+            mso-number-format:"\@";
+        }
+        div,span{
+            font-weight:lighter;
+        }
+         .contractTemp{
+            font-family: Microsoft YaHei;
+            font-size:10.5pt;
+            text-align: left;
+            color:#000000;
+            line-height:24pt;
+            font-weight:100;
+        }
+		 .pageNext{
+			 page-break-after: always;
+		 }
+        .enFont{
+            font-family: "times new roman";
+            font-size:10.5pt;
+        }
+        .pageHeader{
+            font-family: Microsoft YaHei;
+            font-size:14pt;
+            text-align: center;
+            color:#808080;
+        }
+        .pageFooter{
+            font-family: "times new roman";
+            font-size:10.5pt;
+            overflow:hidden;
+            width:100%;
+            color:#808080;
+            line-height: normal;
+        }
+		 .pageFooter .footer_right{
+			 width: 50%;
+			 text-align: right;
+			 float: right;
+		 }
+		 .pageFooter .footer_left{
+			 width: 50%;
+			 float: left;
+		 }
+         .row{
+            width:100%;
+            display: table;
+            content: '';
+            clear: both;
+        }
+        .grid{
+            float: left;
+        }
+        .index_td{
+            width: 8%;
+            text-indent: 20pt;
+        }
+        .con_td{
+            width: 92%;
+        }
+        .contract_money{
+        	width: 100pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .contract_money_capital{
+        	width: 120pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .bankInfo{
+            padding-left:22pt;
+        }
+        .hasBtmBorder{
+        	border-bottom:1px solid #000000;
+        }
+        .deliveryInfo_lable{
+        	display: inline-block;
+        	width:54pt;
+        	padding-left:20pt;
+        }
+        .deliveryInfo{
+        	width:120pt;
+        	display: inline-block;
+        }
+        .contract_party{
+            padding-top:20pt;
+        }
+        .contract_partyA{
+            width:50%;
+        }
+        .contract_partyB{
+            width:50%;
+        }
+        .addressLabel{
+            width:26%;
+            display: block;
+            float: left;
+        }
+        .addressValue{
+            width:74%;
+            display: block;
+            float: left;
+        }
+		.fp{
+			padding-left: 20pt;
+		}
+		 .date{
+			 display: inline-block;
+			 width:34pt;
+		 }
+		 .tableStyle table{
+			 border-collapse:collapse;
+		 }
+        .tableStyle td{
+			border:1px solid #000;
+			padding:2px 4px;
+			text-align: center;
+		}
+		 .tableStyle td.textRight{
+			text-align: right;
+		}
+		 .tableStyle td.textLeft{
+			text-align: left;
+		}
+		.page1{
+			width:100%;
+			height:30px;
+			position: absolute;
+			top:270mm;
+			left:0;
+		}
+		.td_1{width:4%; max-width:3%;}
+	 	.td_2{width:11%; max-width:11%;}
+	 	.td_3{width:11%; max-width:11%;}
+	 	.td_4{width:55%; max-width:55%;}
+	 	.td_5{width:5%; max-width:5%;}
+	 	.td_6{width:5%; max-width:5%;}
+	 	.td_7{width:7%; max-width:7%; word-break:break-all; }
+	 	.td_8{width:7%; max-width:7%; word-break:break-all;}
+	 	.td_9{width:7%; max-width:7%;}
+	 	.td_10{width:7%; max-width:7%;}
+	 	.td_11{width:7%; max-width:7%;}
+	 	.td_12{width:6%; max-width:6%;}
+	 	.td_13{width:6%; max-width:6%;}
+	 	.td_14{width:6%; max-width:6%;}
+	 	.td_15{width:6%; max-width:6%;}
+
+	</style>
+</head>
+<body>
+	<div class="contractTemp">
+		<div  class="row">
+			<div class="pageHeader">一撕得包装物销售合同</div>
+		</div>
+	        <div  class="row partyA">
+	            <div>购货单位（甲方）:<span>     ${clientCompact.clientName!''}</span></div>
+	        </div>
+	        <div  class="row partyB">
+	            <div>供货单位（乙方）：<span>北京一撕得物流技术有限公司</span></div>
+	        </div>
+	        <div class="row">
+	            <div>一、 产品清单：</div>
+	        </div>
+	        <div class="row">
+				<div class="tableStyle">
+					<table>
+						<thead>
+						<tr>
+							<td rowspan="1">序号</td>
+							<td rowspan="1">商品名称</td>
+							<td colspan="4">规格</td>
+							<td rowspan="1">数量</td>
+							<td rowspan="1">单位</td>
+							<td rowspan="1">单价</td>
+						</tr>
+						</thead>
+						<#assign productIndex =1>
+						<#list clientCompactProductBill.clientCompactProducts as product>
+							<tr>
+								<td class="text-center td_1">${productIndex}</td>
+								<#assign productIndex =productIndex+1>
+								<td class="td_2">${product.productName!''}</td>
+								<td class="td_4" colspan="4">${product.specification!''}</td>
+								<td class="td_2">${product.quantity!''}</td>
+								<td class="td_2">${product.unit!''}</td>
+								<td class="td_2">${product.price!''}</td>
+							</tr>
+						<#if product.bomProducts??>
+						<#list product.bomProducts as bomProduct>
+							<tr>
+								<td class="text-center td_1">bom元件</td>
+								<td class="td_2">${bomProduct.productName!''}</td>
+								<td class="td_4">${bomProduct.specification!''}</td>
+								<td class="td_2">${bomProduct.quantity!''}</td>
+								<td class="td_2">${bomProduct.unit!''}</td>
+								<td class="td_2">${bomProduct.price!''}</td>
+							</tr>
+						</#list>
+						</#if>
+						</#list>
+						<tr>
+							<td class="textRight"></td>
+							<td colspan="8" class="textLeft">
+								刀版费:<span>${clientCompactProductBill.startUpCost+clientCompactProductBill.mouldCost}</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="textRight"></td>
+							<td colspan="8" class="textLeft">
+								其他  :<span>${clientCompactProductBill.otherPrice!''}</span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="9">订单总金额：<span>${clientCompactProductBill.totalPrice!''}</span></td>
+						</tr>
+					</table>
+				</div>
+	        </div>
+	        <div class="row">
+	        	<div>二、 合同金额：合同总金额：￥<label class="contract_money">${clientCompactProductBill.totalPrice!''}</label>(人民币)，大写：<label class="contract_money_capital">${clientCompactProductBill.totalPriceUp!''}</label>；（最终结算以实际签收数量为准）</div>
+	        </div>
+	        <div class="row">
+	        	<div>三、结算条款</div>
+	        </div>
+			<#if clientCompact.settleCondition == '4028a881626a6df301626bc47d0a003c'>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">1</span>、</div>
+            	<div class="con_td grid">甲方向乙方提交书面订单后三个工作日内，将该批次订货金额的100%汇入乙方指定的银行账号，乙方确认收款后，向甲方书面确认交货日期；</div>
+	        </div>
+	         <div class="row">
+	        	<div class="index_td grid "><span class="enFont">2</span>、</div>
+            	<div class="con_td grid">订单合同生效后，乙方确认收款后向甲方发出该批次产品；甲方在收到乙方的货物并经验收合格后，按照实际验收数量通知乙方开具增值税发票；</div>
+	        </div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">3</span>、</div>
+            	<div class="con_td grid">甲方未按照合同约定时间支付相关货款，则视为延迟履行合同，迟延一天按照货款金额0.3%收取迟延履行利息，且乙方有权因甲方的迟延履行推迟交货时间。</div>
+	        </div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">4</span>、</div>
+            	<div class="con_td grid">乙方指定结算账户</div>
+	        </div>
+			<#elseif clientCompact.settleCondition == '4028a881626a6df301626bc527a1003d'>
+				<div  class="row">
+					<div  class="index_td grid"><span class="enFont">1</span>、</div>
+					<div  class="con_td grid">甲方向乙方提交书面订单后三个工作日内，将该批次订货金额的<span class="enFont">50%</span>汇入乙方指定的银行账号，乙方确认收款后，向甲方书面确认交货日期；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">2</span>、</div>
+					<div class="con_td grid">订单合同生效后，乙方按订单要求将该批次产品生产完毕，甲方在收到货物后3个工作日内完成产品验收及对账，乙方在确认对账金额后<span class="enFont">2</span>个工作日内开具增值税发票，甲方收到乙方开具的增值税发票确认无误后，在票到<span class="enFont">7</span>个工作日之内支付剩余货款；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">3</span>、</div>
+					<div class="con_td grid">甲方未按照合同约定时间支付相关货款，则视为延迟履行合同，迟延一天按照货款金额<span class="enFont">0.3%</span>收取迟延履行利息，且乙方有权因甲方的迟延履行推迟交货时间；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">4</span>、</div>
+					<div class="con_td grid">乙方指定结算账户</div>
+				</div>
+			<#elseif clientCompact.settleCondition == '4028a881626a6df301626bc56e18003e'>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">1</span>、</div>
+					<div class="con_td grid">订单合同生效后，乙方按订单要求将该批次产品生产完毕，甲方在收到货物后<span class="enFont">3</span>个工作日内完成产品验收及对账，乙方在确认对账金额后<span class="enFont">2</span>个工作日内开具增值税发票，甲方收到乙方开具的增值税发票确认无误后，在收到发票后的<span class="enFont">10</span>个工作日之内支付全部货款；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">2</span>、</div>
+					<div class="con_td grid">甲方未按照合同约定时间支付相关货款，则视为延迟履行合同，迟延一天按照货款金额<span class="enFont">0.3%</span>收取迟延履行利息，且乙方有权因甲方的迟延履行推迟交货时间；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">3</span>、</div>
+					<div class="con_td grid">乙方指定结算账户</div>
+				</div>
+			<#elseif clientCompact.settleCondition == '4028a881626a6df301626bc5f93754mg8'>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">1</span>、</div>
+					<div class="con_td grid">订单合同生效后，乙方按订单要求将该批次产品生产完毕，甲方在收到货物后<span class="enFont">3</span>个工作日内完成产品验收及对账，乙方在确认对账金额后<span class="enFont">2</span>个工作日内开具增值税发票，甲方收到乙方开具的增值税发票确认无误后，在收到发票后的<span class="enFont">7</span>个自然日之内支付全部货款；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">2</span>、</div>
+					<div class="con_td grid">甲方未按照合同约定时间支付相关货款，则视为延迟履行合同，迟延一天按照货款金额<span class="enFont">0.3%</span>收取迟延履行利息，且乙方有权因甲方的迟延履行推迟交货时间；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">3</span>、</div>
+					<div class="con_td grid">乙方指定结算账户</div>
+				</div>
+			<#elseif clientCompact.settleCondition == '4028a881626a6df301626bc5b107003f'>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">1</span>、</div>
+					<div class="con_td grid">甲方以月结的方式支付上个对账期的货款。乙方应于每月月底前将上月<span class="enFont">26</span>日至本月<span class="enFont">25</span>日之间完成交货的产品明细对账单发与甲方进行核对确认，双方核对确认无误后的<span class="enFont">3</span>-<span class="enFont">5</span>日内，乙方按照对账确认金额为甲方开具并邮寄增值税发票，甲方收到乙方开具的增值税发票确认无误后，在当月底之前支付上个对账周期全部货款；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">2</span>、</div>
+					<div class="con_td grid">甲方未按照合同约定时间支付相关货款，则视为延迟履行合同，迟延一天按照货款金额0.3%收取迟延履行利息，且乙方有权因甲方的迟延履行推迟交货时间；</div>
+				</div>
+				<div  class="row">
+					<div class="index_td grid"><span class="enFont">3</span>、</div>
+					<div class="con_td grid">乙方指定结算账户</div>
+				</div>
+			</#if>
+	        <div  class="row">
+	            <div class="index_td grid"></div>
+	            <div class="con_td grid bankInfo">开户名称：北京一撕得物流技术有限公司</div>
+	        </div>
+	        <div  class="row">
+	            <div class="index_td grid"></div>
+	            <div class="con_td grid bankInfo">开户行：中国建设银行北京东大街支行</div>
+	        </div>
+	        <div  class="row">
+	            <div class="index_td grid"></div>
+	            <div class="con_td grid bankInfo">账号：<span class="enFont">1100 1069 6000 5303 5980</span></div>
+	        </div>
+	        <div class="row">
+	        	<div>四、送货服务</div>
+	        </div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">1</span>、</div>
+            	<div class="con_td grid">交货时，乙方或其承运人应向甲方交付送货单，甲方以此为依据检验、确认的数量为最终供货量；甲方在接收货物时，应在乙方出示的交货明细表上签字确认作为收货凭证；由于产品质量问题需要退回产品所造成的运输费用或其他因产品质量问题产生的额外费用由乙方承担。</div>
+	        </div>
+	         <div class="row">
+	        	<div class="index_td grid "><span class="enFont">2</span>、</div>
+            	<div class="con_td grid">交货信息</div>
+	        </div>
+	         <div class="row">
+	        	<div class="index_td grid "></div>
+            	<div class="con_td grid"><span class="deliveryInfo_lable">送货地址：</span><span class="deliveryInfo hasBtmBorder">${clientCompactProductBill.deliveryAddress}</span></div>
+	        </div>
+	         <div class="row">
+	        	<div class="index_td grid "></div>
+            	<div class="con_td grid"><span class="deliveryInfo_lable">收货人：</span><span class="deliveryInfo hasBtmBorder">${clientCompactProductBill.deliveryContacts}</span></div>
+	        </div>
+	         <div class="row">
+	        	<div class="index_td grid"></div>
+            	<div class="con_td grid"><span class="deliveryInfo_lable">联系电话：</span><span class="deliveryInfo hasBtmBorder">${clientCompactProductBill.deliveryMobile}</span></div>
+	        </div>
+	         <div class="row">
+	        	<div class="index_td grid "></div>
+            	<div class="con_td grid"><span class="deliveryInfo_lable">交货日期：</span><span class="deliveryInfo hasBtmBorder">${clientCompactProductBill.deliveryHopeTimestamp?string('yyyy年MM月dd日')}</span></div>
+	        </div>
+	        <div class="row">
+	            <div>五、产品检验</div>
+	        </div>
+	         <div class="row">
+	        	<div class="index_td grid "><span class="enFont">1</span>、</div>
+            	<div class="con_td grid">乙方交付的产品应符合甲乙双方共同确定的验收标准；</div>
+	        </div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">2</span>、</div>
+            	<div class="con_td grid">甲方如在收到货物后检验鉴定乙方提供的货物不符合标准，则应在得到检验结果后三日内书面通知乙方，乙方在确认检验结果属实后3个工作日内，应取回该批不合格货物，并提供合格货物给甲方。</div>
+	        </div>
+			<div class="row">
+				<div>六、知识产权</div>
+			</div>
+			<div class="row">
+				<div class="index_td grid "><span class="enFont">1</span>、</div>
+				<div class="con_td grid">一撕得包装箱为乙方所设计开发的专利产品，乙方拥有该专利产品相关合法权益；</div>
+			</div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">2</span>、</div>
+            	<div class="con_td grid">除非乙方书面授权同意，否则甲方不得委托任何第三方生产与供应任何与一撕得包装箱相似的产品，如有违约，则为侵犯乙方知识产权，按侵权金额赔偿乙方十倍损失；</div>
+	        </div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">3</span>、</div>
+            	<div class="con_td grid">除非甲方书面授权同意，否则乙方不得将带有甲方标识的一撕得包装箱向任何第三方销售，如有违约，则为侵犯甲方知识产权，按侵权金额赔偿甲方十倍损失；</div>
+	        </div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">4</span>、</div>
+            	<div class="con_td grid">乙方为甲方制造、供应产品时按照甲方指定的式样贴附商标，该商标所有权无论是否注册均归甲方所有。因此，发生与第三方之间有关知识产权的权利侵害等纠纷时，均由甲方负责解决；</div>
+	        </div>
+	        <div class="row">
+	        	<div class="index_td grid "><span class="enFont">5</span>、</div>
+            	<div class="con_td grid">甲方作为品牌及商标的合法拥有者，在本合同生效后的同时，给乙方出具品牌、商标使用及经营《授权书》；如甲方所使用品牌及商标涉及第三方公司，在本合同生效同时，给乙方出具第三方公司出具给甲方的品牌、商标使用及经营《授权书》。</div>
+	        </div>
+	        <div class="row">
+	            <div>七、争议解决方式</div>
+	        </div>
+	        <div class="row">
+	        	<div class="fp">与本合同有关的任何争议，双方应先友好协商，双方的争议无法圆满解决时，提请被违约方所在地有管辖权的人民法院依据国家法律进行审理。 </div>
+	        </div>
+	         <div class="row">
+	            <div>八、合同生效及终止</div>
+	        </div>
+	        <div class="row">
+	        	<div class="fp">合同自双方签字并盖章后生效，双方权利义务履行完毕后，合同终止。</div>
+	        </div>
+	        <div class="row">
+	            <div>九、合同一式两份，双方各执一份，具有同等法律效力。</div>
+	        </div>
+	         <div  class="row contract_party">
+            	<div class="grid contract_partyA">
+            		<div class="addressLabel">甲方(盖章):</div><div class="addressValue">${clientCompact.clientName!''}</div>
+            	</div>
+                <div class="grid contract_partyB">
+                	<div class="addressLabel">乙方(盖章):</div><div class="addressValue">北京一撕得物流技术有限公司</div>
+                </div>
+	        </div>
+	        <div  class="row">
+	            <div class="grid contract_partyA">销售代表(签字):<span></span></div>
+	            <div class="grid contract_partyB">销售代表(签字):${clientCompact.currentUser!''}<span></span></div>
+	        </div>
+	         <div  class="row">
+	            <div class="grid contract_partyA">日期：<span class="date"></span>年<span class="date"></span>月<span class="date"></span>日</div>
+	            <div class="grid contract_partyB">日期：<span class="date"></span>年<span class="date"></span>月<span class="date"></span>日</div>
+	        </div>
+	</div>
+</body>
+</html>

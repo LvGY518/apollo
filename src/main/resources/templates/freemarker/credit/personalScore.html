@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>>
+
+     <style>
+         @page {
+             size: 210mm 297mm;
+         }
+
+         div,span{
+             font-weight:lighter;
+         }
+         .contractTemp{
+             font-family: Microsoft YaHei;
+             font-size:10.5pt;
+             text-align: center;
+             color:#000000;
+             line-height:24pt;
+             font-weight:100;
+         }
+         .pageNext{
+             page-break-after: always;
+         }
+         .enFont{
+             font-family: "times new roman";
+             font-size:10.5pt;
+         }
+         .pageHeader{
+             font-family: Microsoft YaHei;
+             font-size:14pt;
+             text-align: center;
+             color:#808080;
+         }
+         .pageFooter{
+             font-family: "times new roman";
+             font-size:10.5pt;
+             overflow:hidden;
+             width:100%;
+             color:#808080;
+             line-height: normal;
+         }
+         .pageFooter .footer_right{
+             width: 500px;
+             text-align: right;
+             float: right;
+         }
+         .pageFooter .footer_left{
+             width: 50%;
+             float: left;
+         }
+         .row{
+             width:100%;
+             display: table;
+             content: '';
+             clear: both;
+         }
+         .grid{
+             float: left;
+         }
+         .index_td{
+             width: 8%;
+             text-indent: 20pt;
+         }
+         .con_td{
+             width: 92%;
+         }
+         .contract_money{
+             width: 100pt;
+             display: inline-block;
+             border-bottom:1px solid #000000;
+         }
+         .contract_money_capital{
+             width: 120pt;
+             display: inline-block;
+             border-bottom:1px solid #000000;
+         }
+         .bankInfo{
+             padding-left:22pt;
+         }
+         .hasBtmBorder{
+             border-bottom:1px solid #000000;
+         }
+         .deliveryInfo_lable{
+             display: inline-block;
+             width:54pt;
+             padding-left:20pt;
+         }
+         .deliveryInfo{
+             width:120pt;
+             display: inline-block;
+         }
+         .contract_party{
+             padding-top:20pt;
+         }
+         .contract_partyA{
+             width:50%;
+         }
+         .contract_partyB{
+             width:50%;
+         }
+         .addressLabel{
+             width:26%;
+             display: block;
+             float: left;
+         }
+         .addressValue{
+             width:74%;
+             display: block;
+             float: left;
+         }
+         .fp{
+             padding-left: 20pt;
+         }
+         .date{
+             display: inline-block;
+             width:34pt;
+         }
+         .tableStyle table{
+             border-collapse:collapse;
+         }
+         .tableStyle td{
+             border:1px solid #000;
+             padding:2px 4px;
+             text-align: center;
+         }
+         .tableStyle td.textRight{
+             text-align: right;
+         }
+         .tableStyle td.textLeft{
+             text-align: left;
+         }
+         .page1{
+             width:100%;
+             height:30px;
+             position: absolute;
+             top:270mm;
+             left:0;
+         }
+         table{
+             width: 100%;
+             color: #333333;
+             border: none;
+             border:1px solid gainsboro;
+             margin-bottom:50px;
+             border-spacing: 0;
+         }
+         thead{
+             background: #EBEBEB;
+         }
+         th {
+             padding: 28px 5px;
+             font-size: 16px;
+             line-height: 14px;
+             font-weight: normal;
+         }
+         th,td {
+             text-align: center;
+             border:1px solid gainsboro;
+             padding:10px;
+             border-collapse: collapse;
+         }
+         td{
+             width:100px;
+             height:50px;
+         }
+        </style>
+    <title>pdf</title>
+</head>
+
+<body>
+    <div class="contractTemp">
+        <div class="page">
+        <div class="row">
+        </div>
+        <div class="row" style="padding-top: 270px">
+            <h1>个人信用报告</h1>
+            <p>（基础版）</p>
+            <p>目标企业名称：${queryString!''}</p>
+            <p>有效期：${currentDate?string('yyyy年-MM月-dd日')}-${endDate?string('yyyy年-MM月-dd日')}</p>
+            <p>北京一撕得物流技术有限公司  </p>
+            <p>${currentDate?string('yyyy年-MM月-dd日')}</p>
+                
+        </div>
+            <div class="pageFooter" style="padding-top: 300px">
+                <#assign page=1>
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        <div class="pageNext"></div>
+        <div class="page">
+            <div class="row">
+                <h1 class="h1">个人信息</h1>
+                <table>
+                    <tr>
+                        <td>小白信用分</td>
+                        <td>${baiScore} </td>
+                        <td>小白信用等级</td>
+                        <td>${baiLevel}</td>
+                    </tr>
+
+                    <tr>
+                        <td>资产价值得分</td>
+                        <td>${property}</td>
+                        <td>身份特征得分</td>
+                        <td>${identity}</td>
+                    </tr>
+                    <tr>
+                        <td>履约历史得分</td>
+                        <td>${performance}</td>
+                        <td>行为偏好得分</td>
+                        <td>${characteristic}</td>
+                    </tr>
+                    <tr>
+                        <td>关系网络得分</td>
+                        <td>${relationshipNetwork!''}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

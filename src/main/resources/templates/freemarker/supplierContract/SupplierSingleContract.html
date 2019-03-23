@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"></meta>
+	<style type="text/css">
+		 @page {
+            size: 210mm 297mm;
+        }
+        table,div,th,div,thead,tbody,tfoot,p,span{
+            margin:0px;
+            padding:0px;
+            border:none;
+            font-size:10.5pt;
+            font-weight:400;
+            font-style:normal;
+            text-decoration:none;
+            font-family:Microsoft YaHei;
+            mso-generic-font-family:auto;
+            mso-font-charset:134;
+            mso-number-format:"\@";
+        }
+        div,span{
+            font-weight:lighter;
+        }
+         .contractTemp{
+            font-family: Microsoft YaHei;
+            font-size:10.5pt;
+            text-align: left;
+            color:#000000;
+            line-height:24pt;
+            font-weight:100;
+        }
+		 .pageNext{
+			 page-break-after: always;
+		 }
+        .enFont{
+            font-family: "times new roman";
+            font-size:10.5pt;
+        }
+        .pageHeader{
+            font-family: Microsoft YaHei;
+            font-size:14pt;
+            text-align: center;
+            color:#808080;
+        }
+        .pageFooter{
+            font-family: "times new roman";
+            font-size:10.5pt;
+            overflow:hidden;
+            width:100%;
+            color:#808080;
+            line-height: normal;
+        }
+		 .pageFooter .footer_right{
+			 width: 50%;
+			 text-align: right;
+			 float: right;
+		 }
+		 .pageFooter .footer_left{
+			 width: 50%;
+			 float: left;
+		 }
+         .row{
+            width:100%;
+            display: table;
+            content: '';
+            clear: both;
+        }
+        .grid{
+            float: left;
+        }
+        .index_td{
+            width: 8%;
+            text-indent: 20pt;
+        }
+        .con_td{
+            width: 92%;
+        }
+        .contract_money{
+        	width: 100pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .contract_money_capital{
+        	width: 120pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .bankInfo{
+            padding-left:22pt;
+        }
+        .hasBtmBorder{
+        	border-bottom:1px solid #000000;
+        }
+        .deliveryInfo_lable{
+        	display: inline-block;
+        	width:54pt;
+        	padding-left:20pt;
+        }
+        .deliveryInfo{
+        	width:120pt;
+        	display: inline-block;
+        }
+        .contract_party{
+            padding-top:20pt;
+        }
+        .contract_partyA{
+            width:50%;
+        }
+        .contract_partyB{
+            width:50%;
+        }
+        .addressLabel{
+            width:26%;
+            display: block;
+            float: left;
+        }
+        .addressValue{
+            width:74%;
+            display: block;
+            float: left;
+        }
+		.fp{
+			padding-left: 20pt;
+		}
+		 .date{
+			 display: inline-block;
+			 width:34pt;
+		 }
+		 .tableStyle table{
+			 border-collapse:collapse;
+		 }
+        .tableStyle td{
+			border:1px solid #000;
+			padding:2px 4px;
+			text-align: center;
+		}
+		 .tableStyle td.textRight{
+			text-align: right;
+		}
+		 .tableStyle td.textLeft{
+			text-align: left;
+		}
+		.page1{
+			width:100%;
+			height:30px;
+			position: absolute;
+			top:270mm;
+			left:0;
+		}
+		.td_1{width:4%; max-width:3%;}
+	 	.td_2{width:11%; max-width:11%;}
+	 	.td_3{width:11%; max-width:11%;}
+	 	.td_4{width:5%; max-width:5%;}
+	 	.td_5{width:5%; max-width:5%;}
+	 	.td_6{width:5%; max-width:5%;}
+	 	.td_7{width:7%; max-width:7%; word-break:break-all; }
+	 	.td_8{width:7%; max-width:7%; word-break:break-all;}
+	 	.td_9{width:7%; max-width:7%;}
+	 	.td_10{width:7%; max-width:7%;}
+	 	.td_11{width:7%; max-width:7%;}
+	 	.td_12{width:6%; max-width:6%;}
+	 	.td_13{width:6%; max-width:6%;}
+	 	.td_14{width:6%; max-width:6%;}
+	 	.td_15{width:6%; max-width:6%;}
+
+	</style>
+</head>
+<body>
+	<div class="contractTemp">
+		<div  class="row">
+			<div class="pageHeader">一次性产品采购合同</div>
+		</div>
+		<div  class="row partyA">
+			<div>需方 ：<span>${supplierSingleContract.needCompany!''}</span></div>
+			<div>合同编号 ：<span>${supplierSingleContract.code!''}</span></div>
+		</div>
+		<div  class="row partyB">
+			<div>供方 ：<span>${supplierSingleContract.provideCompany!''}</span></div>
+			<div>签约地点 ：<span>${supplierSingleContract.needSignAddress!''}</span></div>
+		</div>
+		<div  class="row">
+			<div class="grid contract_partyA"></div>
+			<div class="grid contract_partyB">签订时间 ：
+				<span class="date">${createDateY!''}</span> 年
+				<span class="date">${createDateM!''}</span>月
+				<span class="date">${createDateD!''}</span>日</div>
+		</div>
+		<div class="row">
+			<div class="tableStyle">
+				<table>
+					<tr>
+						<td colspan="16">一、 产品名称、商标、型号、厂家、数量、金额、供货时间及数量</td>
+					</tr>
+					<tr>
+						<td colspan="2">产品名称</td>
+						<td colspan="2">牌号商标</td>
+						<td colspan="2">规格型号</td>
+						<td colspan="2">生产厂家</td>
+						<td colspan="2">数量（kg/个）</td>
+						<td colspan="2">单价（kg/个）</td>
+						<td colspan="2">总金额（元）</td>
+						<td colspan="2">备注</td>
+					</tr>
+					<#list detailList as product>
+						<tr>
+							<td colspan="2">${product.productName!''}</td>
+							<td colspan="2">${product.brand!''}</td>
+							<td colspan="2">${product.specificationType!''}</td>
+							<td colspan="2">${product.manufactureFactory!''}</td>
+							<td colspan="2">${product.quantity!''}</td>
+							<td colspan="2">${product.price!''}</td>
+							<td colspan="2">${product.totalPrice!''}</td>
+							<td colspan="2">${product.remarks!''}</td>
+						</tr>
+					</#list>
+					<tr>
+						<td colspan="2">共计 ：</td>
+						<td colspan="2"></td>
+						<td colspan="2"></td>
+						<td colspan="2"></td>
+						<td colspan="2">${supplierSingleContract.allnum!''}</td>
+						<td colspan="2">${supplierSingleContract.allprice!''}</td>
+						<td colspan="2"></td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td colspan="16">合计人民币金额（大写）：${supplierSingleContract.totalPrice!''} 元整</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div>二、质量要求技术标准、供方对质量负责的条件和期限：按供方提供的标样/产品技术说明书为准
+			</div>
+		</div>
+		<div class="row">
+			<div>三、交（提）货地点、方式：</div>
+		</div>
+		<div class="row">
+			<div>四、运输方式及费用负担：供方委托第三方物流公司，运费由供方承担，为核实物流配送准确性，由需方收货时确认产品、牌号商标、规格型号等信息的一致与否，并在收货时需方向物流公司提出异议。货品经需方验收合格并向供方出具验收单时为货物交付时间。货品部分合格的，供方交付全部符合验收标准的货品时间为交付时间。
+			</div>
+		</div>
+		<div class="row">
+			<div>五、包装要求：
+			</div>
+		</div>
+		<div class="row">
+			<div>六、货物交付数量、表面瑕疵的提出：交付时应由需方在验收当日当及时提出，验收合格货物签收后视为需方对数量、规格、型 号、等表而面可见部分无瑕疵的认定无异议。
+			</div>
+		</div>
+		<div class="row">
+			<div>七、验收标准、方法及提出异议期限：需方应在交货后三六十日内书面提出质量异议。逾期未提出书面 质量异议的，视为供方交付的货物质暈符合合同约定。
+			</div>
+		</div>
+		<div class="row">
+			<div>八、货款支付方式及支付期限： ${supplierSingleContract.needBillingType!''}
+				发票类型：${supplierSingleContract.needInvoiceType!''}
+			</div>
+		</div>
+		<div class="row">
+			<div>九、	如需提供担保，另立合同担保书，作为本合同附件：
+			</div>
+		</div>
+		<div class="row">
+			<div>十、对于需方所购买的产品以及产品所涉及的所有文件，包括但不限于图纸、技术标准、产品说明 等，供方均保留所有有关的知识产权，对于一切侵犯知识产权的行为，权利人都将通过有关途径进行索赔。
+			</div>
+		</div>
+		<div class="row">
+			<div>十一、违约责任：供方逾期交付支付货款物的，按本合同总金额的20%的标准向供需方支付违约金。致使供需方通 过诉讼的方式主张合法权利益的，需供方还应承担由此产牛的诉讼费、保全费、律师费、公告非费、保全担保费等支出费用。
+			</div>
+		</div>
+		<div class="row">
+			<div>十二、解决合同纠纷的方式：在需方所在地人民法院。
+			</div>
+		</div>
+		<div class="row">
+			<div>十三、双方一致同意仅通过本协议文末预留的方式传送意思表示，通过本条预留的联系方式外的地址或联系方式通信的，不发生法律效力。通过电子方式传送的，信息发出且未收到退信提示的为送达。邮件传送的，邮件到达对方预留地址视为送达，对方拒收或查无地址退件视为已送达。预留联系方式变化的，任一方应提前2个工作告知对方否则有关意思发送至原预留联系方式的仍然有效。
+			</div>
+		</div>
+		<div class="row">
+			<div>十四、其它约定事项：合同自双方盖章之日起生效，盖章请回传
+			</div>
+		</div>
+		<div class="row">
+			<div class="tableStyle">
+				<table>
+					<tr>
+						<td colspan="8">需方 : ${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">供方 : ${supplierSingleContract.provideCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">单位名称（章）：<br/>北京一撕得物流技术有限公司</td>
+						<td colspan="8">单位名称 : ${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">单位地址 ：${supplierSingleContract.needAddress!''}</td>
+						<td colspan="8">单位地址 ：${supplierSingleContract.provideAddress!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">法定代表人 ：${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">法定代表人 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">委托代理人 ：${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">委托代理人 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">电话 ：${supplierSingleContract.needPhone!''}</td>
+						<td colspan="8">电话 ：${supplierSingleContract.providePhone!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">微信 ：${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">微信 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">开户银行 ：${supplierSingleContract.needInvoiceBank!''}</td>
+						<td colspan="8">开户银行 ：${supplierSingleContract.provideInvoiceBank!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">帐号 ：${supplierSingleContract.needBankAccount!''}</td>
+						<td colspan="8">帐号 ：${supplierSingleContract.provideBankAccount!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">税号 ：${supplierSingleContract.needTaxPayerId!''}</td>
+						<td colspan="8">邮政编码 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>>
+
+     <style>
+         @page {
+             size: 210mm 297mm;
+         }
+
+         div,span{
+             font-weight:lighter;
+         }
+         .contractTemp{
+             font-family: Microsoft YaHei;
+             font-size:10.5pt;
+             text-align: center;
+             color:#000000;
+             line-height:24pt;
+             font-weight:100;
+         }
+         .pageNext{
+             page-break-after: always;
+         }
+         .enFont{
+             font-family: "times new roman";
+             font-size:10.5pt;
+         }
+         .pageHeader{
+             font-family: Microsoft YaHei;
+             font-size:14pt;
+             text-align: center;
+             color:#808080;
+         }
+         .pageFooter{
+             font-family: "times new roman";
+             font-size:10.5pt;
+             overflow:hidden;
+             width:100%;
+             color:#808080;
+             line-height: normal;
+         }
+         .pageFooter .footer_right{
+             width: 500px;
+             text-align: right;
+             float: right;
+         }
+         .pageFooter .footer_left{
+             width: 50%;
+             float: left;
+         }
+         .row{
+             width:100%;
+             display: table;
+             content: '';
+             clear: both;
+         }
+         .grid{
+             float: left;
+         }
+         .index_td{
+             width: 8%;
+             text-indent: 20pt;
+         }
+         .con_td{
+             width: 92%;
+         }
+         .contract_money{
+             width: 100pt;
+             display: inline-block;
+             border-bottom:1px solid #000000;
+         }
+         .contract_money_capital{
+             width: 120pt;
+             display: inline-block;
+             border-bottom:1px solid #000000;
+         }
+         .bankInfo{
+             padding-left:22pt;
+         }
+         .hasBtmBorder{
+             border-bottom:1px solid #000000;
+         }
+         .deliveryInfo_lable{
+             display: inline-block;
+             width:54pt;
+             padding-left:20pt;
+         }
+         .deliveryInfo{
+             width:120pt;
+             display: inline-block;
+         }
+         .contract_party{
+             padding-top:20pt;
+         }
+         .contract_partyA{
+             width:50%;
+         }
+         .contract_partyB{
+             width:50%;
+         }
+         .addressLabel{
+             width:26%;
+             display: block;
+             float: left;
+         }
+         .addressValue{
+             width:74%;
+             display: block;
+             float: left;
+         }
+         .fp{
+             padding-left: 20pt;
+         }
+         .date{
+             display: inline-block;
+             width:34pt;
+         }
+         .tableStyle table{
+             border-collapse:collapse;
+         }
+         .tableStyle td{
+             border:1px solid #000;
+             padding:2px 4px;
+             text-align: center;
+         }
+         .tableStyle td.textRight{
+             text-align: right;
+         }
+         .tableStyle td.textLeft{
+             text-align: left;
+         }
+         .page1{
+             width:100%;
+             height:30px;
+             position: absolute;
+             top:270mm;
+             left:0;
+         }
+         table{
+             width: 100%;
+             color: #333333;
+             border: none;
+             border:1px solid gainsboro;
+             margin-bottom:50px;
+             border-spacing: 0;
+         }
+         thead{
+             background: #EBEBEB;
+         }
+         th {
+             padding: 28px 5px;
+             font-size: 16px;
+             line-height: 14px;
+             font-weight: normal;
+         }
+         th,td {
+             text-align: center;
+             border:1px solid gainsboro;
+             padding:10px;
+             border-collapse: collapse;
+         }
+         td{
+             width:100px;
+             height:50px;
+         }
+        </style>
+    <title>pdf</title>
+</head>
+
+<body>
+    <div class="contractTemp">
+        <div class="page">
+        <div class="row">
+        </div>
+        <div class="row" style="padding-top: 270px">
+            <h1>企业信用报告</h1>
+            <p>（基础版）</p>
+            <p>目标企业名称：${queryString!''}</p>
+            <p>有效期：${currentDate?string('yyyy年-MM月-dd日')}-${endDate?string('yyyy年-MM月-dd日')}</p>
+            <p>北京一撕得物流技术有限公司  </p>
+            <p>${currentDate?string('yyyy年-MM月-dd日')}</p>
+                
+        </div>
+            <div class="pageFooter" style="padding-top: 300px">
+                <#assign page=1>
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        <div class="pageNext"></div>
+        <div class="page">
+            <div class="row">
+                <h1 class="h1">企业信息</h1>
+                <table>
+                    <tr>
+                        <td>统一社会代码</td>
+                        <td>${creditCode} </td>
+                        <td>工商注册号</td>
+                        <td>${regNo}</td>
+                    </tr>
+
+                    <tr>
+                        <td>组织机构代码</td>
+                        <td>${orgCodes}</td>
+                        <td>经营状态</td>
+                        <td>${entStatus}</td>
+                    </tr>
+                    <tr>
+                        <td>法定代表人</td>
+                        <td>${frName}</td>
+                        <td>注册资金（万元）</td>
+                        <td>${regCap}</td>
+                    </tr>
+                    <tr>
+                        <td>所属行业</td>
+                        <td>${industryPhy!''}</td>
+                        <td>成立日期 </td>
+                        <td>${esDate}</td>
+                    </tr>
+                    <tr>
+                        <td>营业期限</td>
+                        <td>${opFrom}至${opTo}</td>
+                        <td>核准日期 </td>
+                        <td>${approvedTime}</td>
+                    </tr>
+                    <tr>
+                        <td>省份</td>
+                        <td>${regOrgProvince}</td>
+                        <td>登记机关 </td>
+                        <td>${regOrg}</td>
+                    </tr>
+                    <tr>
+                        <td>公司电话</td>
+                        <td>${phoneNumber}</td>
+                        <td>企业类型 </td>
+                        <td>${entType}</td>
+                    </tr>
+                    <tr>
+                        <td>公司邮箱</td>
+                        <td>${email}</td>
+                        <td>企业官网 </td>
+                        <td>${website}</td>
+                    </tr>
+
+                    <tr>
+                        <td>是否有严重违法信息 </td>
+                        <td>${illegal}</td>
+                        <td>是否有法院裁判信息 </td>
+                        <td>${lawsuit}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        <div class="pageNext"></div>
+            <div class="page">
+            <div class="row">
+            <table>
+                <tr>
+                    <td>未正常的抽查检查结果条数 </td>
+                    <td>${checkResultCount!''}</td>
+                    <td>行政处罚条数 </td>
+                    <td>${punishmentCount!''}</td>
+                </tr>
+                <tr>
+                    <td>是否失信被执行 </td>
+                    <td>${punishedBreak!''}</td>
+                    <td>被执行人信息 </td>
+                    <td>${punished!''}</td>
+
+                </tr>
+                <tr>
+                    <td>是否有开庭公告 </td>
+                    <td>${openCourt!''}</td>
+                    <td>是否有法院公告 </td>
+                    <td>${courtNotice!''}</td>
+                </tr>
+                <tr>
+                    <td>执行中金额 </td>
+                    <td>${subjectAmount!''}</td>
+                    <td>是否有注册资本变少记录 </td>
+                    <td>${regCapLow!''}</td>
+                </tr>
+                <tr>
+                    <td>是否有变更记录 </td>
+                    <td>${alterRecord!''}</td>
+                    <td>负责人变更次数 </td>
+                    <td>${legalPersonCount!''}</td>
+                </tr>
+                <tr>
+                    <td>被担保人债券数额汇总 </td>
+                    <td>${mortAmount!''}</td>
+                    <td>是否命中黑名单</td>
+                    <td>${hit!''}</td>
+                </tr>
+                <tr>
+                    <td>黑名单来源 </td>
+                    <td>${hitStr!''}</td>
+                    <td>是否列入经营异常名录</td>
+                    <td>${abnormal!''}</td>
+                </tr>
+
+                <tr>
+                    <td>注册地址</td>
+                    <td colspan="3">${dom!''}</td>
+                </tr>
+                <tr>
+                    <td>经营范围</td>
+                    <td colspan="3">${opScope!''}</td>
+                </tr>
+            </table>
+            </div>
+                <div class="pageFooter">
+                    <div class="footer_right">${page}</div>
+                    <#assign page =page+1>
+                </div>
+            </div>
+        <#if abnormalEntities?? >
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>经营异常名录</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>经营异常名录原因</td>
+                            <td>移除异常名录原因</td>
+                            <td>列入日期 </td>
+                            <td>做出决定机关</td>
+                            <td>移除日期</td>
+                            <td>做出决定机关</td>
+                        </tr>
+                    </thead>
+                    <#assign num01Index =0 >
+                    <#list abnormalEntities as abnormal>
+                    <#assign num01Index =num01Index+1 >
+                    <#if num01Index%3==0>
+                </table>
+                    <div class="pageFooter">
+                        <div class="footer_right">${page}</div>
+                        <#assign page =page+1>
+                    </div>
+                 </div>
+                <div class="pageNext"></div>
+                <div class="page">
+                <table>
+                </#if>
+                    <tr>
+                        <td>${abnormal.putReason!''}</td>
+                        <td>${abnormal.removeReason!''}</td>
+                        <td>${abnormal.putDate!''}</td>
+                        <td>${abnormal.putDepartment!''} </td>
+                        <td>${abnormal.removeDate!''}</td>
+                        <td>${abnormal.removeDepartment!''}</td>
+                    </tr>
+                </#list>
+                </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        </#if>
+        <#if checkInfoList??>
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>抽查信息</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>检查实施机关</td>
+                    <td>类型 </td>
+                    <td>检查日期</td>
+                    <td>结果</td>
+                    <td>备注</td>
+                </tr>
+                </thead>
+                <#assign num02Index =0 >
+                <#list checkInfoList as checkInfo>
+                <#assign num02Index =num02Index+1 >
+                <#if num02Index%8==0>
+                </table>
+                <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+                 </div>
+                 </div>
+                 <div class="pageNext"></div>
+                 <div class="page">
+                 <table>
+                </#if>
+                <tr>
+                    <td>${checkInfo.checkOrg!''}</td>
+                    <td>${checkInfo.checkType!''}</td>
+                    <td>${checkInfo.checkDate!''}</td>
+                    <td>${checkInfo.checkResult!''}</td>
+                    <td>${checkInfo.remark!''}</td>
+                </tr>
+                 </#list>
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        </#if>
+        <#if courtNoticeList??>
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>法院公告信息</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>原告</td>
+                    <td>被告 </td>
+                    <td>公告类型</td>
+                    <td>法院</td>
+                    <td>公告时间</td>
+                </tr>
+                </thead>
+                <#assign num0Index =0 >
+                <#list courtNoticeList as courtNotice>
+                <#assign num0Index =num0Index+1 >
+                <#if num0Index%6==0>
+            </table>
+                <div class="pageFooter">
+                    <div class="footer_right">${page}</div>
+                    <#assign page =page+1>
+                </div>
+            </div>
+            <div class="pageNext"></div>
+            <div class="page">
+            <table>
+            </#if>
+                <tr>
+                    <td>${courtNotice.plaintiff!''}</td>
+                    <td>${courtNotice.defendant!''}</td>
+                    <td>${courtNotice.type!''}</td>
+                    <td>${courtNotice.court!''}</td>
+                    <td>${courtNotice.time!''}</td>
+                </tr>
+            </#list>
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        </#if>
+        <#if entLawsuitList??>
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>违法信息</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>位置</td>
+                    <td>类型</td>
+                    <td>案件号</td>
+                    <td>发布日期</td>
+                    <td>原告</td>
+                    <td>被告</td>
+                    <td>执行法院</td>
+                    <td>案件类型</td>
+                    <td>审理程序</td>
+                </tr>
+                </thead>
+                <#assign num1Index =0 >
+                <#list entLawsuitList as entLawsuit>
+                <#assign num1Index =num1Index+1 >
+                <#if num1Index%3==0>
+                </table>
+                <div class="pageFooter">
+                    <div class="footer_right">${page}</div>
+                    <#assign page =page+1>
+                </div>
+                </div>
+                <div class="pageNext"></div>
+                <div class="page">
+                <table>
+                </#if>
+                <tr>
+                    <td>${entLawsuit.base!''}</td>
+                    <td>${entLawsuit.doctype!''}</td>
+                    <td>${entLawsuit.caseNo!''}</td>
+                    <td>${entLawsuit.submitTime!''}</td>
+                    <td>${entLawsuit.demandant!''}</td>
+                    <td>${entLawsuit.defendant!''}</td>
+                    <td>${entLawsuit.court!''}</td>
+                    <td>${entLawsuit.caseType!''}</td>
+                    <td>${entLawsuit.trialProcedure!''}</td>
+                    </tr>
+            </#list>
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">1</div>
+            </div>
+        </div>
+        </#if>
+        <#if invList??>
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>对外投资信息</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>企业机构名称</td>
+                    <td>法人代表姓名 </td>
+                    <td>注册日期</td>
+                    <td>出资比例</td>
+                    <td>注册资本</td>
+                    <td>企业状态</td>
+                </tr>
+                </thead>
+                <#assign num2Index =0 >
+                <#list invList as inv>
+                <#assign num2Index =num2Index+1 >
+                <#if num2Index%8==0>
+                </table>
+                <div class="pageFooter">
+                    <div class="footer_right">${page}</div>
+                    <#assign page =page+1>
+                </div>
+                </div>
+                <div class="pageNext"></div>
+                <div class="page">
+                <table>
+                </#if>
+                <tr>
+                    <td>${inv.entName!''}</td>
+                    <td>${inv.name!''}</td>
+                    <td>${inv.esDate!''}</td>
+                    <td>${inv.fundedRatio!''}</td>
+                    <td>${inv.regCap!''}</td>
+                    <td>${inv.entStatus!''}</td>
+                </tr>
+            </#list>
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        </#if>
+
+        <#if openCourtList??>
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>开庭公告</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>案件号</td>
+                    <td>案由 </td>
+                    <td>原告</td>
+                    <td>被告</td>
+                    <td>开庭时间</td>
+                    <td>法院</td>
+                    <td>承办部门</td>
+                    <td>审判长</td>
+                </tr>
+
+                </thead>
+                <#assign num3Index =0 >
+                <#list openCourtList as openCourt>
+                <#assign num3Index =num3Index+1 >
+                <#if num3Index%4==0>
+                </table>
+                <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+                </div>
+                </div>
+                <div class="pageNext"></div>
+                <div class="page">
+                <table>
+                </#if>
+                <tr>
+                    <td>${openCourt.caseNo!''}</td>
+                    <td>${openCourt.caseReason!''}</td>
+                    <td>${openCourt.plaintiff!''}</td>
+                    <td>${openCourt.defendant!''}</td>
+                    <td>${openCourt.time!''}</td>
+                    <td>${openCourt.court!''}</td>
+                    <td>${openCourt.organizer!''}</td>
+                    <td>${openCourt.judge!''}</td>
+                </tr>
+            </#list>
+
+
+
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        </#if>
+        <#if punishedList??>
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>被执行人信息</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>立案时间</td>
+                    <td>案号 </td>
+                    <td>执行标的</td>
+                    <td>执行法院</td>
+                </tr>
+                </thead>
+                <#assign num4Index =0 >
+                <#list punishedList as punished>
+                <#assign num4Index =num4Index+1 >
+                <#if num4Index%8==0>
+                </table>
+                <div class="pageFooter">
+                    <div class="footer_right">${page}</div>
+                    <#assign page =page+1>
+                </div>
+            </div>
+            <div class="pageNext"></div>
+            <div class="page">
+            <table>
+                </#if>
+                <tr>
+                    <td>${punished.filingData!''}</td>
+                    <td>${punished.caseNo!''} </td>
+                    <td>${punished.theSubject!''}</td>
+                    <td>${punished.executegov!''}</td>
+                </tr>
+            </#list>
+
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        </#if>
+        <#if punishmentEntities??>
+        <div class="pageNext"></div>
+        <div class="page">
+            <h3>处罚实例</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>决定文书号</td>
+                    <td>违法行为类型 </td>
+                    <td>行政处罚内容</td>
+                    <td>决定机关名称</td>
+                    <td>处罚决定日期</td>
+                    <td>备注</td>
+                </tr>
+                </thead>
+                <#assign num6Index =0 >
+                <#list punishmentEntities as punishment>
+                <#assign num6Index =num6Index+1 >
+                <#if num6Index%8==0>
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+            </div>
+        <div class="pageNext"></div>
+        <div class="page">
+        <table>
+        </#if>
+                <tr>
+                    <td>${punishment.penDecNo!''}</td>
+                    <td>${punishment.caseTypes!''}</td>
+                    <td>${punishment.penResult!''}</td>
+                    <td>${punishment.penAuth!''}</td>
+                    <td>${punishment.penDecisionDate!''}</td>
+                    <td>${punishment.description!''}</td>
+                </tr>
+            </#list>
+
+            </table>
+            <div class="pageFooter">
+                <div class="footer_right">${page}</div>
+                <#assign page =page+1>
+            </div>
+        </div>
+        </#if>
+    </div>
+</body>
+
+</html>

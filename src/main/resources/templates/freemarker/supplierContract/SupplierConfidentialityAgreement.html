@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"></meta>
+	<style type="text/css">
+		 @page {
+            size: 210mm 297mm;
+        }
+        table,div,th,div,thead,tbody,tfoot,p,span{
+            margin:0px;
+            padding:0px;
+            border:none;
+            font-size:10.5pt;
+            font-weight:400;
+            font-style:normal;
+            text-decoration:none;
+            font-family:Microsoft YaHei;
+            mso-generic-font-family:auto;
+            mso-font-charset:134;
+            mso-number-format:"\@";
+        }
+        div,span{
+            font-weight:lighter;
+        }
+         .contractTemp{
+            font-family: Microsoft YaHei;
+            font-size:10.5pt;
+            text-align: left;
+            color:#000000;
+            line-height:24pt;
+            font-weight:100;
+        }
+		 .pageNext{
+			 page-break-after: always;
+		 }
+        .enFont{
+            font-family: "times new roman";
+            font-size:10.5pt;
+        }
+        .pageHeader{
+            font-family: Microsoft YaHei;
+            font-size:14pt;
+            text-align: center;
+            color:#808080;
+        }
+        .pageFooter{
+            font-family: "times new roman";
+            font-size:10.5pt;
+            overflow:hidden;
+            width:100%;
+            color:#808080;
+            line-height: normal;
+        }
+		 .pageFooter .footer_right{
+			 width: 50%;
+			 text-align: right;
+			 float: right;
+		 }
+		 .pageFooter .footer_left{
+			 width: 50%;
+			 float: left;
+		 }
+         .row{
+            width:100%;
+            display: table;
+            content: '';
+            clear: both;
+        }
+        .grid{
+            float: left;
+        }
+        .index_td{
+            width: 8%;
+            text-indent: 20pt;
+        }
+        .con_td{
+            width: 92%;
+        }
+        .contract_money{
+        	width: 100pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .contract_money_capital{
+        	width: 120pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .bankInfo{
+            padding-left:22pt;
+        }
+        .hasBtmBorder{
+        	border-bottom:1px solid #000000;
+        }
+        .deliveryInfo_lable{
+        	display: inline-block;
+        	width:54pt;
+        	padding-left:20pt;
+        }
+        .deliveryInfo{
+        	width:120pt;
+        	display: inline-block;
+        }
+        .contract_party{
+            padding-top:20pt;
+        }
+        .contract_partyA{
+            width:50%;
+        }
+        .contract_partyB{
+            width:50%;
+        }
+        .addressLabel{
+            width:26%;
+            display: block;
+            float: left;
+        }
+        .addressValue{
+            width:74%;
+            display: block;
+            float: left;
+        }
+		.fp{
+			padding-left: 20pt;
+		}
+		 .date{
+			 display: inline-block;
+			 width:34pt;
+		 }
+		 .tableStyle table{
+			 border-collapse:collapse;
+		 }
+        .tableStyle td{
+			border:1px solid #000;
+			padding:2px 4px;
+			text-align: center;
+		}
+		 .tableStyle td.textRight{
+			text-align: right;
+		}
+		 .tableStyle td.textLeft{
+			text-align: left;
+		}
+		.page1{
+			width:100%;
+			height:30px;
+			position: absolute;
+			top:270mm;
+			left:0;
+		}
+		.td_1{width:4%; max-width:3%;}
+	 	.td_2{width:11%; max-width:11%;}
+	 	.td_3{width:11%; max-width:11%;}
+	 	.td_4{width:5%; max-width:5%;}
+	 	.td_5{width:5%; max-width:5%;}
+	 	.td_6{width:5%; max-width:5%;}
+	 	.td_7{width:7%; max-width:7%; word-break:break-all; }
+	 	.td_8{width:7%; max-width:7%; word-break:break-all;}
+	 	.td_9{width:7%; max-width:7%;}
+	 	.td_10{width:7%; max-width:7%;}
+	 	.td_11{width:7%; max-width:7%;}
+	 	.td_12{width:6%; max-width:6%;}
+	 	.td_13{width:6%; max-width:6%;}
+	 	.td_14{width:6%; max-width:6%;}
+	 	.td_15{width:6%; max-width:6%;}
+
+	</style>
+</head>
+<body>
+	<div class="contractTemp">
+		<div  class="row">
+			<div class="pageHeader">一次性产品采购合同</div>
+		</div>
+		<div  class="row partyA">
+			<div>甲方 ：<span>${supplierSingleContract.needCompany!''}</span></div>
+			<div>通讯地址 ：<span>${supplierSingleContract.code!''}</span></div>
+			<div>联系电话 ：<span>${supplierSingleContract.code!''}</span></div>
+		</div>
+		<div  class="row partyB">
+			<div>乙方 ：<span>${supplierSingleContract.provideCompany!''}</span></div>
+			<div>通讯地址 ：<span>${supplierSingleContract.needSignAddress!''}</span></div>
+			<div>联系电话 ：<span>${supplierSingleContract.code!''}</span></div>
+		</div>
+		<div class="row">
+			<div>  甲乙双方有意就包装材料的研发、生产、采购、销售、仓储运输等业务达成合作。鉴于双方拟形成的合作关系，以及乙方知悉的甲方商业秘密具有重要影响，为加强对企业商业秘密的保护，维护双方经济交往中的合法权益，明确乙方的保密义务及责任，依据国家有关法律法规，双方经协商一致，达成如下保密条款：
+			</div>
+		</div>
+		<div class="row">
+			<div>  本协议提及的“商业秘密”指，不为公众知悉,能为权利人带来经济利益,具有实用性,并经权利人采取保密措施的技术信息和经营信息。该商业秘密既包括甲方及其关联公司所有或持有的商业秘密，也包括虽属于第三方所有或持有，但甲方负有保密义务的商业秘密，包括技术秘密和经营秘密。：</div>
+		</div>
+		<div class="row">
+			<div>  其中技术包括但不限于：专利技术、工作进度、技术方案、工程设计、电路设计、制造方法、配方、工艺流程、技术指标、计算机软件、数据库、研究开发记录、技术报告、测试报告、检测报告、实验数据、试验结果、图纸、样品、样机、模型、模具、操作手册、技术文档、相关的函电等。 </div>
+		</div>
+		<div class="row">
+			<div>  经营秘密包括但不限于：双方的合作情况、签署的任何文件，包括合同、协议、备忘录、订单等文件中所包含的一切信息、客户名单、行销计划、采购资料、定价政策、财务资料、进货渠道、法律事务信息、人力资源信息等。
+			</div>
+		</div>
+		<div class="row">
+			<div>  同时包括其他根据行业惯例、公司规定、双方约定应当保密的重要资料。
+			</div>
+		</div>
+		<div class="row">
+			<div>1. 乙方保证上述保密信息仅用于与合作有关的用途或目的，并予以妥善保存。经甲方提出要求，乙方应按照甲方的指示将含有保密信息的所有文件或其他资料归还给甲方，或者按照甲方的指示予以销毁。合作终止后，甲方有权向乙方提出要求将保密信息资料交还。
+				2. 所有由甲方通过任何有效形式发送给乙方的产品图纸，样品，或者技术信息， 产品说明，无论是供乙方报价或者生产，未经甲方书面许可，乙方不得自用，发给其它任何第三方，或者对外进行宣传。
+				3. 所有甲方投资生产的设备，生产交付完后使用权归乙方，但其关键技术所有权和知识产权均属甲方所有，未经甲方书面许可，乙方不得转让，或者给自己或者其他第三方生产使用，甲方有权随时追究其责任。
+				4．所有甲方委托乙方代为加工的专利产品，知识产权均属甲方所有。未经甲方书面许可， 乙方不得在任何报纸杂志，产品宣传册，产品展厅，网络平台使用甲方产品的图纸，模具或者产品本身，包括实物或者照片进行宣传，更不得以任何方式将该产品核心技术讲解或介绍给任何第三方。
+				5. 乙方承诺不参与任何模仿或抄袭甲方专利产品的行为，乙方如有违反，无论是客户委托或自行实施，均视为违反本协议，甲方均有权追究乙方责任。
+				6.对于甲方的最终客户，无论乙方通过任何的途径获知，乙方不得就与甲方合作的项目直接或者间接的与甲方的最终客户进行交易。乙方对甲方的报价及工厂的价格不能以任何形式告知甲方的最终客户，客户发至乙方的邮件或其它信息，在没有抄送甲方的情况下，乙方必须转至甲方，不得直接回复。
+				7. 如果甲方安排客户参观、考察乙方，乙方应按照甲方要求布置、清洁被参观区域，调配工作人员以配合甲方工作。同时未经甲方同意，乙方不得向客户告知或提供乙方带有联系途径的名片、目录、简介等相关文件材料。也不得私下留存客户有关带有联系途径的名片、目录、简介等相关文件材料。
+				8．乙方需要自行采取有效措施，确保以上保密措施的正常进行。乙方关联公司或乙方工作人员就以上事宜对甲方造成损失的，均由乙方单位承担一切责任。
+				9．乙方出现违反本协议的任何条款的行为，甲方保留一切追究乙方违约责任的权利。
+				1）对于就本协议发生异议或未在协议中规定的其他事项，以及双方在协议执行过程中产生的争议，由甲乙双方依据商业惯例协商解决。
+				2）对于乙方以上违约责任所产生的商业违约金由甲乙双方协商计算相应业务损失，并按损失的10倍予以赔偿，最低不低于500万元。
+				3）甲方有权通过报纸杂志，网络平台等媒介公告或者曝光乙方违反本协议行为。
+				4）甲方有权就乙方违约事宜向法院提起诉讼，依据国家相关法律审理解决。
+				10. 该协议自签字盖章之日起生效，无论双方是否有实质性合作，且甲乙双方合作期间到终止合作后5年内有效。
+				11. 因本协议而引起的纠纷，如果协商解决不成，任何一方均有权向甲方所在地人民法院提起诉讼。
+			</div>
+		</div>
+		<div class="row">
+			<div class="tableStyle">
+				<table>
+					<tr>
+						<td colspan="8">甲方 : ${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">乙方 : ${supplierSingleContract.provideCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">单位名称（章）：<br/>北京一撕得物流技术有限公司</td>
+						<td colspan="8">单位名称 : ${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">单位地址 ：${supplierSingleContract.needAddress!''}</td>
+						<td colspan="8">单位地址 ：${supplierSingleContract.provideAddress!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">法定代表人 ：${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">法定代表人 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">委托代理人 ：${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">委托代理人 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">电话 ：${supplierSingleContract.needPhone!''}</td>
+						<td colspan="8">电话 ：${supplierSingleContract.providePhone!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">微信 ：${supplierSingleContract.needCompany!''}</td>
+						<td colspan="8">微信 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">开户银行 ：${supplierSingleContract.needInvoiceBank!''}</td>
+						<td colspan="8">开户银行 ：${supplierSingleContract.provideInvoiceBank!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">帐号 ：${supplierSingleContract.needBankAccount!''}</td>
+						<td colspan="8">帐号 ：${supplierSingleContract.provideBankAccount!''}</td>
+					</tr>
+					<tr>
+						<td colspan="8">税号 ：${supplierSingleContract.needTaxPayerId!''}</td>
+						<td colspan="8">邮政编码 ：${supplierSingleContract.needCompany!''}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

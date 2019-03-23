@@ -1,0 +1,260 @@
+<!DOCTYPE html [
+        <!ENTITY nbsp "&#160;">
+]>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta charset="utf-8"/>
+    <title>报价</title>
+    <style type="text/css">
+        @page {
+            size: 480mm 340mm;
+        }
+
+        html, body, table, tr, th, td, thead, tbody, tfoot, p, span, div, h1, ul, li, strong {
+            margin: 0px;
+            padding: 0px;
+            border: none;
+            font-size: 12pt;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            font-family: SimSun;
+            mso-generic-font-family: auto;
+            mso-font-charset: 134;
+            mso-number-format: "\@";
+            color: #000; /*font-size:12px;*/
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .offerProdWraper {
+            width: 100%;
+        }
+
+        .offerTableWraper {
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .offerTableWraper2 {
+            width: 80%;
+        }
+
+        h1 {
+            padding: 10px 0px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .listWraper {
+            margin-bottom: 20px;
+            padding: 0px 0px 10px;
+            border-bottom: 2px solid black;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .listWraper .left {
+            float: left;
+        }
+
+        .listWraper .right {
+            float: right;
+        }
+
+        .listWraper li {
+            list-style: none;
+        }
+
+        .listWraper p, .listWraper span {
+            padding: 5px 0px;
+            display: inline-block;
+        }
+
+        .listWraper p {
+            width: 200px;
+        }
+
+        .explainWraper {
+            padding: 5px;
+            width: 100%;
+            line-height: 24px;
+            background: #f2f2f2;
+        }
+
+        .explainWraper strong {
+            font-weight: bold;
+        }
+
+        .offerTable {
+            border-spacing: 0;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .offerTable thead th, .offerTable tbody td {
+            text-align: center;
+            border: 1px solid #000;
+            padding: 5px;
+        }
+
+        .offerTable thead th {
+            font-weight: normal;
+            font-weight: bold;
+            background: #f2f2f2;
+        }
+
+        .offerTable tbody td {
+        }
+
+        .offerTable_index {
+            width: 3%
+        }
+
+        .offerTable_boxName {
+            width: 7%;
+        }
+
+        .offerTable_boxType {
+            width: 5%
+        }
+
+        .offerTable_spec {
+            width: 15%
+        }
+
+        .offerTable_layer {
+            width: 3%
+        }
+
+        .offerTable_number {
+            width: 4%
+        }
+
+        .offerTable_material {
+            width: 16%
+        }
+
+        .offerTable_offer {
+            width: 22%
+        }
+
+        .offerTable_offer1 {
+            width: 18%
+        }
+
+        .offerTable_surface {
+            width: 6%
+        }
+
+        .offerTable_mould {
+            width: 3%
+        }
+
+        .offerTable_boxWeight {
+            width: 3%
+        }
+
+        .offerTable_sidePressure {
+            width: 4%
+        }
+
+        .offerTable_bursting {
+            width: 4%
+        }
+
+        .phone {
+            float: right;
+        }
+
+        .pageNext {
+            page-break-after: always;
+        }
+    </style>
+</head>
+<body>
+<div class="offerProdWraper">
+    <h1>气枕标品询价表</h1>
+    <div class="listWraper">
+        <ul class="left">
+            <li><p>报价单号</p><span>${code!''}</span></li>
+            <li><p>客户简称</p><span>${clientName!''}</span></li>
+            <li><p>联系方式</p><span>${phone!''}</span></li>
+        </ul>
+        <ul class="right">
+            <li><p>报价日期</p><span>${downloadQuotationDate!''}</span></li>
+            <li><p>截止日期</p><span>${downloadExpiryDate!''}</span></li>
+            <li><p>交货地址</p><span>${areaCode!''}</span></li>
+        </ul>
+    </div>
+
+
+    <div class="offerTableWraper">
+        <table class="offerTable">
+            <thead>
+            <tr>
+                <th rowspan="2" class="offerTable_index">序号</th>
+                <th rowspan="2" class="offerTable_boxName">产品名称</th>
+                <th rowspan="2" class="offerTable_boxType">产品材质</th>
+                <th colspan="3" class="offerTable_spec">纸箱规格（mm）</th>
+                <th rowspan="2" class="offerTable_surface">厚度(丝)</th>
+                <th rowspan="2" class="offerTable_surface">克重(g/㎡)</th>
+                <th rowspan="2" class="offerTable_surface">询价数量(卷)</th>
+                <th rowspan="2" class="offerTable_surface">每批送货量(卷)</th>
+                <th rowspan="2" class="offerTable_surface">年使用量(卷)</th>
+                <th rowspan="2" class="offerTable_surface">其他信息备注</th>
+                <th rowspan="2" class="offerTable_surface">工艺</th>
+                <#if (replyPriceVOS?size>0)>
+                <#list replyPriceVOS as price>
+                <th colspan="${replyPriceVOS?size}" class="offerTable_offer">报价(元/每个)</th>
+                </#list>
+                </#if>
+            </tr>
+            <tr>
+                <th>长(mm)</th>
+                <th>宽(mm)</th>
+                <th>高(mm)单个气柱</th>
+                <#if (replyPriceVOS?size>0)>
+                <#list replyPriceVOS as price>
+                <th>${price.startQuantity}-${price.endQuantity}</th>
+                </#list>
+                </#if>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <#list properties as property>
+                <td height="40px">1}</td>
+                <td height="40px">2}</td>
+                <#if property.name == "产品材质">
+                <td height="40px">${property.value!''}</td>
+                </#if>
+                <td height="40px">4</td>
+                <td height="40px">5</td>
+                <td height="40px">6</td>
+                <td height="40px">7</td>
+                <td height="40px">8</td>
+                <td height="40px">9</td>
+                <td height="40px">10</td>
+                <td height="40px">11</td>
+                <td height="40px">12</td>
+                <td height="40px">13</td>
+                </#list>
+                <#if (replyPriceVOS?size>0)>
+                <#list replyPriceVOS as price>
+                <td height="40px">${price.totalPrice}</td>
+                </#list>
+                </#if>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

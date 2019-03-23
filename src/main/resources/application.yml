@@ -1,0 +1,124 @@
+logging:
+    level:
+        root: INFO
+        tk.mybatis: DEBUG
+        com.clancey.apollo: DEBUG
+spring:
+    http:
+      encoding:
+        charset: utf-8
+        enabled: true
+        force: true
+    application:
+        name: Apollo
+        #thymelea模板配置
+    thymeleaf:
+        perfix: classpath:/templates/
+        suffix: .html
+        mode: HTML
+        encoding: UTF-8
+        servlet:
+            content-type: text/html
+        cache: false
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+        default-property-inclusion: non_null
+    datasource:
+        name: test
+        url: jdbc:mysql://47.104.91.235:3306/apollo?characterEncoding=UTF8&useSSL=false&autoReconnect=true
+#        url: jdbc:mysql://localhost:3306/apollo?useUnicode=true&characterEncoding=UTF8
+        username: root
+#        password: root
+        password: lgy123456
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    redis:
+        host: 127.0.0.1
+        password:
+        port: 6379
+        timeout: 7200
+        jedis:
+            pool:
+                max-idle: 100
+                min-idle: 1
+                max-active: 1000
+                max-wait: -1
+    mail:
+        host: smtp.qq.com
+        username: 1669226692@qq.com
+        password: jblaystiilawehac
+        encoding: utf-8
+        properties:
+            mail:
+                smtp:
+                    timeout: 25000
+                    auth: true
+                    port: 465
+                    socketFactory:
+                        class: javax.net.ssl.SSLSocketFactory
+                        fallback: false
+                        port: 465
+                    starttls:
+                        enable: true
+                        required: true
+    servlet:
+        multipart:
+            maxFileSize: 100Mb
+            maxRequestSize: 100Mb
+    aop:
+      auto: true
+      proxy-target-class: true
+    activiti:
+      check-process-definitions: false
+mybatis:
+    basepackage: com.clancey.apollo.**.mapper
+    xmlLocation: classpath:mapper/**/*.xml
+    # id 主键生成
+    mappers: com.clancey.apollo.common.base.BaseMapper,com.clancey.apollo.common.base.BasePhysicalMapper
+    identity: SELECT REPLACE(UUID(),'-','')
+    order: BEFORE
+    typeAliasesPackage: com.clancey.apollo.sys.entity.*
+    configuration:
+        map-underscore-to-camel-case: true
+    tableAuto: update
+    modelPack: com.clancey.apollo.**.entity.*
+    type-handlers-package: com.clancey.apollo.constants.handler
+    mapper-refresh:
+      enabled: true
+      delaySeconds: 30
+      sleepSeconds: 10
+      mappingPath: mybatis
+dingding:
+  appId: dingoagtb2ssmiiwpsqbmy
+  appSecret: 1IqStUH0zC5s4-HuPz8lxsGLY1yOwK2xKpj2PwDuUzZgbyj0D2tZ9VbYLikkTqUo
+  corpId: ding82c55be57319004a35c2f4657eb6378f
+  corpSecret: Za_MfVM7QNri0t2sinaIUlytYvVB65lIWuUx_7sFCwYqDVM87PKMbMoISKpIkn6I
+  agentId: 79291829
+  agentIdApprove: 49873467
+  url: http://localhost/login/doLoginDingDing
+  apolloUrl: http://localhost
+  callBackToken: zzyzsa
+custom:
+  repeat: false
+  excepts: [ '/login/**', '/' ]
+server:
+    port: 8081
+    tomcat:
+      uri-encoding: UTF-8
+
+

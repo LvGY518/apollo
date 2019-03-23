@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.clancey.apollo.sys.mapper.CreateMysqlTablesMapper">
+
+	<!-- 抽取出来的公共部分 -->
+	<sql id="commonSql">
+		<if test="fields.fileTypeLength == 0">
+			`${fields.fieldName}` ${fields.fieldType}
+		</if>
+		<if test="fields.fileTypeLength == 1">
+			`${fields.fieldName}` ${fields.fieldType}(${fields.fieldLength})
+		</if>
+		<if test="fields.fileTypeLength == 2">
+			`${fields.fieldName}`
+			${fields.fieldType}(${fields.fieldLength},${fields.fieldDecimalLength})
+		</if>
+		<if test="fields.fieldIsNull">
+			NULL
+		</if>
+		<if test="!fields.fieldIsNull">
+			NOT NULL
+		</if>
+		<if test="fields.fieldIsAutoIncrement">
+			AUTO_INCREMENT
+		</if>
+		<!-- 不是自增长的才能有默认值 -->
+		<!-- 并且不为null时，因为null是默认的没必要写 -->
+		<if test="!fields.fieldIsAutoIncrement and !fields.fieldIsNull and fields.fieldDefaultValue != 'NULL'">
+			DEFAULT #{fields.fieldDefaultValue}
+		</if>
+		<!-- 不是自增长的才能有默认值 -->
+		<!-- 不是非空时，并且默认值不是NUll -->
+		<if test="!fields.fieldIsAutoIncrement and fields.fieldIsNull and fields.fieldDefaultValue != 'NULL'">
+			DEFAULT #{fields.fieldDefaultValue}
+		</if>
+	</sql>
+
+	<!-- 创建表的 -->
+	<select id="createTable" parameterType="java.util.Map">
+
+		<foreach collection="tableMap" index="key" item="value">
+			create table `${key}`(
+			<foreach collection="value" item="fields" separator=",">
+				<include refid="commonSql"></include>
+				<if test="fields.fieldIsKey">
+					,PRIMARY KEY (`${fields.fieldName}`)
+				</if>
+				<if test="fields.fieldIsUnique">
+					,UNIQUE KEY (`${fields.fieldName}`)
+				</if>
+			</foreach>
+			);
+		</foreach>
+
+	</select>
+
+	<!-- 验证表是否存在 -->
+	<select id="findTableCountByTableName" resultType="int" parameterType="String">
+		select count(1) from information_schema.tables
+		where table_name = #{tableName} and table_schema = (select database())
+	</select>
+
+	<!-- 根据表名查询表的结构 -->
+	<select id="findTableEnsembleByTableName" resultType="com.clancey.apollo.common.actable.command.SysMysqlColumns" parameterType="String">
+		select * from information_schema.columns where table_name = #{tableName} and table_schema = (select database())
+	</select>
+
+	<!-- 增加字段 -->
+	<select id="addTableField" parameterType="java.util.Map">
+
+		<foreach collection="tableMap" index="key" item="fields" separator=";">
+				alter table `${key}` add
+				<include refid="commonSql"></include>
+				<if test="fields.fieldIsKey">
+					PRIMARY KEY
+				</if>
+				<if test="fields.fieldIsUnique">
+					UNIQUE KEY
+				</if>
+		</foreach>
+
+	</select>
+
+	<!-- 删除字段 -->
+	<select id="removeTableField" parameterType="java.util.Map">
+		<foreach collection="tableMap" index="key" item="field" separator=";">
+			alter table `${key}` drop `${field}`
+		</foreach>
+	</select>
+
+	<!-- 修改字段 -->
+	<select id="modifyTableField" parameterType="java.util.Map">
+
+		<foreach collection="tableMap" index="key" item="fields" separator=";">
+				alter table `${key}` modify
+				<include refid="commonSql"></include>
+				<if test="fields.fieldIsKey">
+					PRIMARY KEY
+				</if>
+				<if test="fields.fieldIsUnique">
+					UNIQUE KEY
+				</if>
+		</foreach>
+
+	</select>
+
+
+	<!-- 删除主键字段 -->
+	<select id="dropKeyTableField" parameterType="java.util.Map">
+
+		<foreach collection="tableMap" index="key" item="fields" separator=";">
+				alter table `${key}` modify
+				<include refid="commonSql"></include>
+				,drop primary key
+		</foreach>
+
+	</select>
+
+	<!-- 删除唯一约束 -->
+	<select id="dropUniqueTableField" parameterType="java.util.Map">
+
+		<foreach collection="tableMap" index="key" item="fields" separator=";">
+				alter table `${key}` DROP INDEX `${fields.fieldName}`
+		</foreach>
+
+	</select>
+
+	<!-- 验证表是否存在 -->
+	<select id="dorpTableByName" parameterType="String">
+		DROP TABLE IF EXISTS `${tableName}`;
+	</select>
+
+	<select id="setValueIfNull" parameterType="java.util.Map">
+		<foreach collection="tableMap" index="key" item="fields" separator=";">
+			<choose>
+				<when test="fields.fieldType=='varchar' or fields.fieldType=='char' or fields.fieldType=='text'">
+					UPDATE `${key}` SET `${fields.fieldName}` = 'default' WHERE `${fields.fieldName}` IS NULL
+				</when>
+				<when test="fields.fieldType=='int' or fields.fieldType=='bigint' or fields.fieldType=='tinyint' or fields.fieldType=='decimal' or fields.fieldType=='double'">
+					UPDATE `${key}` SET `${fields.fieldName}` = -128 WHERE `${fields.fieldName}` IS NULL
+				</when>
+				<when test="fields.fieldType=='datetime'">
+					UPDATE `${key}` SET `${fields.fieldName}` = '1970-01-01 00:00:00' WHERE `${fields.fieldName}` IS NULL
+				</when>
+				<otherwise>
+					UPDATE `${key}` SET `${fields.fieldName}` = '' WHERE `${fields.fieldName}` IS NULL
+				</otherwise>
+			</choose>
+		</foreach>
+	</select>
+</mapper>

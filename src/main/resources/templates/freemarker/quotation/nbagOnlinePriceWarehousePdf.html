@@ -1,0 +1,409 @@
+<!DOCTYPE html [
+        <!ENTITY nbsp "&#160;">
+]>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta charset="utf-8"/>
+    <title>报价</title>
+    <style type="text/css">
+        @page {
+            size: 480mm 340mm;
+        }
+        html,body,table,tr,th,td,thead,tbody,tfoot,p,span,div,h1,ul,li,strong{margin:0px;padding:0px;border:none;font-size:12pt;font-weight:400;
+            font-style:normal;text-decoration:none;font-family:SimSun;mso-generic-font-family:auto;mso-font-charset:134;mso-number-format:"\@";
+            color:#000;/*font-size:12px;*/-webkit-box-sizing:border-box;box-sizing:border-box;}
+        .offerProdWraper{width:100%; }
+        .offerTableWraper{margin-bottom:25px; width:100%;}
+        .offerTableWraper2{width:100%;}
+        h1{padding:10px 0px; font-size:22px; font-weight:bold; text-align:center;}
+        .listWraper{margin-bottom:20px; padding:0px 0px 10px; clear:both; overflow:hidden;}
+        .listWraper .left{float:left;}
+        .listWraper .right{float:right;}
+        .listWraper li{list-style:none;}
+        .listWraper p,.listWraper span{padding:5px 0px; display:inline-block;}
+        .listWraper p{width:200px;}
+        .explainWraper{padding:5px;width:100%; line-height:24px;background:#f2f2f2;}
+        .explainWraper strong{font-weight:bold;}
+        .offerTable{border-spacing: 0; border-collapse:collapse; width:100%;}
+        .offerTable thead th,.offerTable tbody td{text-align:center; border:1px solid #000; padding:5px;}
+        .offerTable thead th{font-weight:normal;  font-weight:bold; background:#f2f2f2;}
+        .offerTable tbody td{}
+        .productNameWidth{width: 12%}
+        .productTypeWidth{width: 7%}
+        .productMaterialWidth{width: 6%}
+        .productLengthWidth{width: 7%}
+        .productWidthWidth{width: 7%}
+        .productInsertWidth{width: 6%}
+        .productThickWidth{width: 6%}
+        .productColorWidth{width: 5%}
+        .productAreaWidth{width: 6%}
+        .productLeastWidth{width: 6%}
+        .productNumberWidth{width: 7%}
+        .productWeightWidth{width: 7%}
+        .productPaymentWidth{width: 8%}
+        .productMouthWidth{width: 8%}
+
+        .phone{float:right;}
+        .pageNext {
+            page-break-after: always;
+        }
+    </style>
+</head>
+
+<body>
+<div class="offerProdWraper">
+    <h1>一撕得产品报价单</h1>
+    <div class="listWraper">
+        <ul class="left">
+            <li><p>报价单号</p><span>${onlinePriceCode!''}</span></li>
+            <li><p>客户简称</p><span>${clientAbbreviation!''}</span></li>
+            <li><p>联系人及联系方式</p><span>${contact!''}&nbsp;&nbsp;&nbsp;&nbsp;${phone!''}</span></li>
+        </ul>
+        <ul class="right">
+            <li><p>报价日期</p><span>${downloadOnlinePriceDate!''}</span></li>
+            <li><p>截止日期</p><span>${downLoadExpiryDate!''}</span></li>
+        </ul>
+    </div>
+
+</div>
+<div class="offerProdWraper">
+    <#list quotationWarehousePOJOS as Warehouse>
+    <#if (Warehouse.zipperDetail?size>0)>
+    <div class="offerTableWraper offerTableWraper2">
+        <table class="offerTable">
+            <thead>
+            <tr>
+                <th style="width:3%">序号</th>
+                <th class="productNameWidth">品名</th>
+                <th class="productTypeWidth">袋型</th>
+                <th class="productMaterialWidth">膜材类型</th>
+                <th class="productLengthWidth">外径长（mm）</th>
+                <th class="productWidthWidth">外径宽（mm）</th>
+                <th class="productInsertWidth">封舌（mm）</th>
+                <th class="productThickWidth">厚度（丝）</th>
+                <th class="productColorWidth">印刷颜色</th>
+                <th class="productAreaWidth">印刷面积</th>
+                <#if Warehouse.quotationNbagProductConfigPOJOS.leastOrderNumberShow == "1">
+                <th class="productLeastWidth">起订量（个）</th>
+                </#if>
+                <#if Warehouse.quotationNbagProductConfigPOJOS.orderNumberShow == "1">
+                <th class="productNumberWidth">订单数量（个）</th>
+                </#if>
+                <#if Warehouse.quotationNbagProductConfigPOJOS.orderWeightShow == "1">
+                <th class="productWeightWidth">订单重量（吨）</th>
+                </#if>
+
+    <#if Warehouse.quotationNbagProductConfigPOJOS.priceType == "0" >
+        <th class="productPaymentWidth">预付价格（元/个）</th>
+        <th class="productMouthWidth">月结价格（元/个）</th>
+    <#elseif Warehouse.quotationNbagProductConfigPOJOS.priceType == "1">
+        <th class="productMouthWidth">月结价格（元/个）</th>
+    <#else>
+        <th class="productPaymentWidth">预付价格（元/个）</th>
+</#if>
+                <#if Warehouse.quotationNbagProductConfigPOJOS.versionCostShow == "1">
+                <th class="productVersionWidth">版费（元）</th>
+                </#if>
+            </tr>
+            </thead>
+            <tbody>
+            <#list Warehouse.zipperDetail as zipper>
+                <tr>
+                    <td>${zipper_index+1!''}</td>
+                    <td>${zipper.name!''}</td>
+                    <td>拉链快递袋</td>
+                    <#if zipper.materialTypeId == 'white' >
+                    <td>白色</td>
+                    <#elseif zipper.materialTypeId == 'base'>
+                    <td>本色</td>
+                    <#else>
+                    <td>黑白</td>
+                </#if>
+                    <td>${zipper.outLength!''}</td>
+                    <td >${zipper.outWidth!''}</td>
+                    <td>${zipper.sealingOrInsert!''}</td>
+                    <td>${zipper.thickness!''}</td>
+                    <td>${zipper.printColor!''}</td>
+                    <#if zipper.printArea == 'simple' >
+                        <td>简单印刷</td>
+                    <#elseif zipper.printArea == 'big'>
+                        <td>大面积印刷</td>
+                    <#else>
+                        <td>满版印刷</td>
+                    </#if>
+    <#if Warehouse.quotationNbagProductConfigPOJOS.leastOrderNumberShow == "1">
+    <td>${zipper.leastOrderNumber!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.orderNumberShow == "1">
+<td >${zipper.orderNumber!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.orderWeightShow == "1">
+<td>${zipper.orderWeight!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.priceType == "0" >
+<td>${zipper.paymentPrice!''}</td>
+<td>${zipper.mouthPrice!''}</td>
+<#elseif Warehouse.quotationNbagProductConfigPOJOS.priceType == "1">
+<td>${zipper.mouthPrice!''}</td>
+<#else>
+<td>${zipper.paymentPrice!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.versionCostShow == "1">
+<td>${zipper.versionCost!''}</td>
+</#if>
+</tr>
+            </#list>
+            </tbody>
+        </table>
+    </div>
+</#if>
+
+
+    <#if (Warehouse.traditionDetail?size>0)>
+<div class="offerTableWraper offerTableWraper2">
+    <table class="offerTable">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>品名</th>
+            <th>袋型</th>
+            <th>膜材类型</th>
+            <th>外径长（mm）</th>
+            <th>外径宽（mm）</th>
+            <th>封舌（mm）</th>
+            <th>厚度（丝）</th>
+            <th>印刷颜色</th>
+            <th>印刷面积</th>
+            <#if Warehouse.quotationNbagProductConfigPOJOS.leastOrderNumberShow == "1">
+            <th class="productLeastWidth">起订量（个）</th>
+        </#if>
+        <#if Warehouse.quotationNbagProductConfigPOJOS.orderNumberShow == "1">
+        <th class="productNumberWidth">订单数量（个）</th>
+        </#if>
+        <#if Warehouse.quotationNbagProductConfigPOJOS.orderWeightShow == "1">
+        <th class="productWeightWidth">订单重量（吨）</th>
+    </#if>
+    <#if Warehouse.quotationNbagProductConfigPOJOS.priceType == "0" >
+    <th class="productPaymentWidth">预付价格（元/个）</th>
+    <th class="productMouthWidth">月结价格（元/个）</th>
+    <#elseif Warehouse.quotationNbagProductConfigPOJOS.priceType == "1">
+    <th class="productMouthWidth">月结价格（元/个）</th>
+    <#else>
+    <th class="productPaymentWidth">预付价格（元/个）</th>
+</#if>
+    <#if Warehouse.quotationNbagProductConfigPOJOS.versionCostShow == "1">
+    <th class="productVersionWidth">版费（元）</th>
+</#if>
+        </tr>
+        </thead>
+        <tbody>
+        <#list Warehouse.traditionDetail as zipper>
+        <tr>
+            <td>${zipper_index+1!''}</td>
+            <td>${zipper.name!''}</td>
+            <td>传统快递袋</td>
+            <#if zipper.materialTypeId == 'white' >
+            <td>白色</td>
+            <#elseif zipper.materialTypeId == 'base'>
+            <td>本色</td>
+            <#else>
+            <td>黑白</td>
+        </#if>
+        <td>${zipper.outLength!''}</td>
+        <td >${zipper.outWidth!''}</td>
+        <td>${zipper.sealingOrInsert!''}</td>
+        <td>${zipper.thickness!''}</td>
+        <td>${zipper.printColor!''}</td>
+        <#if zipper.printArea == 'simple' >
+        <td>简单印刷</td>
+        <#elseif zipper.printArea == 'big'>
+        <td>大面积印刷</td>
+        <#else>
+        <td>满版印刷</td>
+        </#if>
+        <#if Warehouse.quotationNbagProductConfigPOJOS.leastOrderNumberShow == "1">
+        <td>${zipper.leastOrderNumber!''}</td>
+    </#if>
+    <#if Warehouse.quotationNbagProductConfigPOJOS.orderNumberShow == "1">
+    <td >${zipper.orderNumber!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.orderWeightShow == "1">
+<td>${zipper.orderWeight!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.priceType == "0" >
+<td>${zipper.paymentPrice!''}</td>
+<td>${zipper.mouthPrice!''}</td>
+<#elseif Warehouse.quotationNbagProductConfigPOJOS.priceType == "1">
+<td>${zipper.mouthPrice!''}</td>
+<#else>
+<td>${zipper.paymentPrice!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.versionCostShow == "1">
+<td>${zipper.versionCost!''}</td>
+</#if>
+        </tr>
+    </#list>
+        </tbody>
+    </table>
+</div>
+</#if>
+
+
+<#if (Warehouse.vestDetail?size>0)>
+<div class="offerTableWraper offerTableWraper2">
+    <table class="offerTable">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>品名</th>
+            <th>袋型</th>
+            <th>膜材类型</th>
+            <th>外径长（mm）</th>
+            <th>外径宽（mm）</th>
+            <th>插边（mm）</th>
+            <th>厚度（丝）</th>
+            <th>印刷颜色</th>
+            <th>印刷面积</th>
+            <#if Warehouse.quotationNbagProductConfigPOJOS.leastOrderNumberShow == "1">
+            <th class="productLeastWidth">起订量（个）</th>
+        </#if>
+        <#if Warehouse.quotationNbagProductConfigPOJOS.orderNumberShow == "1">
+        <th class="productNumberWidth">订单数量（个）</th>
+        </#if>
+        <#if Warehouse.quotationNbagProductConfigPOJOS.orderWeightShow == "1">
+        <th class="productWeightWidth">订单重量（吨）</th>
+    </#if>
+    <#if Warehouse.quotationNbagProductConfigPOJOS.priceType == "0" >
+    <th class="productPaymentWidth">预付价格（元/个）</th>
+    <th class="productMouthWidth">月结价格（元/个）</th>
+    <#elseif Warehouse.quotationNbagProductConfigPOJOS.priceType == "1">
+    <th class="productMouthWidth">月结价格（元/个）</th>
+    <#else>
+    <th class="productPaymentWidth">预付价格（元/个）</th>
+</#if>
+    <#if Warehouse.quotationNbagProductConfigPOJOS.versionCostShow == "1">
+    <th class="productVersionWidth">版费（元）</th>
+</#if>
+        </tr>
+        </thead>
+        <tbody>
+        <#list Warehouse.vestDetail as zipper>
+        <#if overField == 1 && ((zipperDetail?size)+(traditionDetail?size)+(zipper_index+1) != 30)>
+        <tr>
+            <td>${zipper_index+1!''}</td>
+            <td>${zipper.name!''}</td>
+            <td>背心购物袋</td>
+            <#if zipper.materialTypeId == 'white' >
+            <td>白色</td>
+            <#elseif zipper.materialTypeId == 'base'>
+            <td>本色</td>
+            <#else>
+            <td>黑白</td>
+        </#if>
+        <td>${zipper.outLength!''}</td>
+        <td >${zipper.outWidth!''}</td>
+        <td>${zipper.sealingOrInsert!''}</td>
+        <td>${zipper.thickness!''}</td>
+        <td>${zipper.printColor!''}</td>
+        <#if zipper.printArea == 'simple' >
+        <td>简单印刷</td>
+        <#elseif zipper.printArea == 'big'>
+        <td>大面积印刷</td>
+        <#else>
+        <td>满版印刷</td>
+        </#if>
+        <#if Warehouse.quotationNbagProductConfigPOJOS.leastOrderNumberShow == "1">
+        <td>${zipper.leastOrderNumber!''}</td>
+    </#if>
+    <#if Warehouse.quotationNbagProductConfigPOJOS.orderNumberShow == "1">
+    <td >${zipper.orderNumber!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.orderWeightShow == "1">
+<td>${zipper.orderWeight!''}</td>
+</#if>
+
+<#if Warehouse.quotationNbagProductConfigPOJOS.priceType == "0" >
+<td>${zipper.paymentPrice!''}</td>
+<td>${zipper.mouthPrice!''}</td>
+<#elseif Warehouse.quotationNbagProductConfigPOJOS.priceType == "1">
+<td>${zipper.mouthPrice!''}</td>
+<#else>
+<td>${zipper.paymentPrice!''}</td>
+</#if>
+
+
+<#if Warehouse.quotationNbagProductConfigPOJOS.versionCostShow == "1">
+<td>${zipper.versionCost!''}</td>
+</#if>
+        </tr>
+<#else>
+<div class="pageNext">
+</div>
+<tr>
+    <td>${zipper_index+1!''}</td>
+    <td>${zipper.name!''}</td>
+    <td>背心快递袋</td>
+    <#if zipper.materialTypeId == 'white' >
+    <td>白色</td>
+    <#elseif zipper.materialTypeId == 'base'>
+    <td>本色</td>
+    <#else>
+    <td>黑白</td>
+</#if>
+<td>${zipper.outLength!''}</td>
+<td >${zipper.outWidth!''}</td>
+<td>${zipper.sealingOrInsert!''}</td>
+<td>${zipper.thickness!''}</td>
+<td>${zipper.printColor!''}</td>
+<#if zipper.printArea == 'simple' >
+<td>简单印刷</td>
+<#elseif zipper.printArea == 'big'>
+<td>大面积印刷</td>
+<#else>
+<td>满版印刷</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.leastOrderNumberShow == "1">
+<td>${zipper.leastOrderNumber!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.orderNumberShow == "1">
+<td >${zipper.orderNumber!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.orderWeightShow == "1">
+<td>${zipper.orderWeight!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.priceType == "0" >
+<td>${zipper.paymentPrice!''}</td>
+<td>${zipper.mouthPrice!''}</td>
+<#elseif Warehouse.quotationNbagProductConfigPOJOS.priceType == "1">
+<td>${zipper.mouthPrice!''}</td>
+<#else>
+<td>${zipper.paymentPrice!''}</td>
+</#if>
+<#if Warehouse.quotationNbagProductConfigPOJOS.versionCostShow == 1>
+<td>${zipper.versionCost!''}</td>
+</#if>
+</tr>
+</#if>
+    </#list>
+        </tbody>
+    </table>
+</div>
+</#if>
+
+<#if (Warehouse.quotationDescriptionPOJOS?size>0)>
+<div class="explainWraper">
+    <strong>报价说明：</strong>	<br/>
+    <#list Warehouse.quotationDescriptionPOJOS as description>
+    <span height="20px">${description_index+1!''}、&nbsp;&nbsp;${description.descriptionValue!''}</span><br/>
+</#list>
+</div>
+</#if>
+</#list>
+
+</div>
+<div style="padding-bottom: 10px;padding-top: 10px">
+    <li class="phone"><p style="display:inline-block;">企业服务电话：</p><span>400-6366-310</span></li>
+</div>
+
+</body>
+</html>

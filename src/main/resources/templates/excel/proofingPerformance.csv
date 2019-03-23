@@ -1,0 +1,3 @@
+ [(${disignName})], [(${orderNum})], [(${scoreNum})], [(${structPrcture})], [(${structSample})], [(${printingSample})], [(${factorySample})], [(${factoryPicture})]
+[# th:each="item : ${list}"][# th:utext="${item.designerName}"/],[# th:utext="${item.orderNum}" /],[# th:utext="${item.scoreNum}" /],[# th:utext="${item.structPrcture}"/],[# th:utext="${item.structSample}" /],[# th:utext="${item.printingSample}"/],[# th:utext="${item.factorySample}" /],[# th:utext="${item.factoryPicture}" /]
+[/],

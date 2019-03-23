@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"></meta>
+	<style type="text/css">
+		 @page {
+            size: 310mm 297mm;
+        }
+        table,div,th,div,thead,tbody,tfoot,p,span{
+            margin:0px;
+            padding:0px;
+            border:none;
+            font-size:10.5pt;
+            font-weight:400;
+            font-style:normal;
+            text-decoration:none;
+            font-family:Microsoft YaHei;
+            mso-generic-font-family:auto;
+            mso-font-charset:134;
+            mso-number-format:"\@";
+        }
+        div,span{
+            font-weight:lighter;
+        }
+         .contractTemp{
+            font-family: Microsoft YaHei;
+            font-size:10.5pt;
+            text-align: left;
+            color:#000000;
+            line-height:24pt;
+            font-weight:100;
+        }
+		 .pageNext{
+			 page-break-after: always;
+		 }
+        .enFont{
+            font-family: "times new roman";
+            font-size:10.5pt;
+        }
+        .pageHeader{
+            font-family: Microsoft YaHei;
+            font-size:14pt;
+            text-align: center;
+            color:#808080;
+        }
+        .pageFooter{
+            font-family: "times new roman";
+            font-size:10.5pt;
+            overflow:hidden;
+            width:100%;
+            color:#808080;
+            line-height: normal;
+        }
+		 .pageFooter .footer_right{
+			 width: 50%;
+			 text-align: right;
+			 float: right;
+		 }
+		 .pageFooter .footer_left{
+			 width: 50%;
+			 float: left;
+		 }
+         .row{
+            width:100%;
+            display: table;
+            content: '';
+            clear: both;
+        }
+        .grid{
+            float: left;
+        }
+        .index_td{
+            width: 8%;
+            text-indent: 20pt;
+        }
+        .con_td{
+            width: 92%;
+        }
+        .contract_money{
+        	width: 100pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .contract_money_capital{
+        	width: 120pt;
+        	display: inline-block;
+        	border-bottom:1px solid #000000;
+        }
+        .bankInfo{
+            padding-left:22pt;
+        }
+        .hasBtmBorder{
+        	border-bottom:1px solid #000000;
+        }
+        .deliveryInfo_lable{
+        	display: inline-block;
+        	width:54pt;
+        	padding-left:20pt;
+        }
+        .deliveryInfo{
+        	width:120pt;
+        	display: inline-block;
+        }
+        .contract_party{
+            padding-top:20pt;
+        }
+        .contract_partyA{
+            width:50%;
+        }
+        .contract_partyB{
+            width:50%;
+        }
+        .addressLabel{
+            width:26%;
+            display: block;
+            float: left;
+        }
+        .addressValue{
+            width:74%;
+            display: block;
+            float: left;
+        }
+		.fp{
+			padding-left: 20pt;
+		}
+		 .date{
+			 display: inline-block;
+			 width:34pt;
+		 }
+		 .tableStyle table{
+			 border-collapse:collapse;
+		 }
+        .tableStyle td{
+			border:1px solid #000;
+			padding:2px 4px;
+			text-align: center;
+		}
+		 .tableStyle td.textRight{
+			text-align: right;
+		}
+		 .tableStyle td.textLeft{
+			text-align: left;
+		}
+		.page1{
+			width:100%;
+			height:30px;
+			position: absolute;
+			top:270mm;
+			left:0;
+		}
+		.td_1{width:4%; max-width:3%;}
+	 	.td_2{width:11%; max-width:11%;}
+	 	.td_3{width:11%; max-width:11%;}
+	 	.td_4{width:5%; max-width:5%;}
+	 	.td_5{width:5%; max-width:5%;}
+	 	.td_6{width:5%; max-width:5%;}
+	 	.td_7{width:7%; max-width:7%; word-break:break-all; }
+	 	.td_8{width:7%; max-width:7%; word-break:break-all;}
+	 	.td_9{width:7%; max-width:7%;}
+	 	.td_10{width:7%; max-width:7%;}
+	 	.td_11{width:7%; max-width:7%;}
+	 	.td_12{width:6%; max-width:6%;}
+	 	.td_13{width:6%; max-width:6%;}
+	 	.td_14{width:6%; max-width:6%;}
+	 	.td_15{width:6%; max-width:6%;}
+
+	</style>
+</head>
+<body>
+	<div class="contractTemp">
+		<div  class="row">
+			<div class="pageHeader">${supplierBill.billingPeriod!''}</div>
+		</div>
+		<div  class="row partyA">
+			<div>供应商  ：<span>${supplierBill.supplierName!''}</span></div>
+			<div>对账单 ：<span>${supplierBill.code!''}</span></div>
+			<div>对账金额 ：<span>${supplierBill.billMoney!''}</span></div>
+		</div>
+		<br/>
+		<br/>
+		<div  class="row partyB">
+			<div><span>采购订单</span></div>
+		</div>
+		<div class="row">
+			<div class="tableStyle">
+				<table>
+					<thead>
+						<td >采购单</td>
+						<td >送货单</td>
+						<td >产品名称</td>
+						<td >商品名称</td>
+						<td >出库数量</td>
+						<td >签收数量</td>
+						<td >单价（元/个）</td>
+						<td >刀版费</td>
+						<td >印版费</td>
+						<td >运费</td>
+						<td >加工费</td>
+						<td >开机费</td>
+						<td >卸货费</td>
+						<td >质量罚款</td>
+						<td >kc费用</td>
+						<td >合计</td>
+					</thead>
+					<tbody>
+					  	 <#if purchaseDetailMap?? && (purchaseDetailMap?size > 0) >
+							<#list purchaseDetailMap?keys as key>
+								<#assign item=purchaseDetailMap[key] >
+								<#list item as value>
+									 <tr>
+										<#if value_index == 0 >
+											<td rowspan="${item?size}">${key!''}</td>
+										</#if>
+										<td >${value.deliverBagCode!''}</td>
+										<td >${value.goodsName!''}</td>
+										<td >${value.productName!''}</td>
+										<td >${value.outboundQuantity!''}</td>
+										<td >${value.signInQuantity!''}</td>
+										<td >${value.unitPrice!''}</td>
+										<td >${value.knifeFee!''}</td>
+										<td >${value.editionFee!''}</td>
+										<td >${value.transportFee!''}</td>
+										<td >${value.processFee!''}</td>
+										<td >${value.startingFee!''}</td>
+										<td >${value.dischargeFee!''}</td>
+										<td >${value.qualityFineMoney!''}</td>
+										<td >${value.kcMoney!''}</td>
+										<td >${value.totalMoney!''}</td>
+									</tr>
+								</#list>
+							</#list>
+						</#if>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div  class="row partyB">
+			<div><span>打样订单</span></div>
+		</div>
+		<div class="row">
+			<div class="tableStyle">
+				<table>
+					<tr>
+						<td colspan="2">打样单号</td>
+						<td colspan="2">产品名称</td>
+						<td colspan="2">商品名称</td>
+						<td colspan="2">打样数量</td>
+						<td colspan="2">金额</td>
+					</tr>
+					<#if supplierBillProofingDetailList?? && (supplierBillProofingDetailList?size > 0) >
+						<#list supplierBillProofingDetailList as product>
+							<tr>
+								<td colspan="2">${product.proofingCode!''}</td>
+								<td colspan="2">${product.goodsName!''}</td>
+								<td colspan="2">${product.productName!''}</td>
+								<td colspan="2">${product.proofingQuantity!''}</td>
+								<td colspan="2">${product.totalMoney!''}</td>
+							</tr>
+						</#list>
+					</#if>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

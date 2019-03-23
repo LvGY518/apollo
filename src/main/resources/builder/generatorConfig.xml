@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<properties resource="dev.properties"/>-->
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="mergeable" value="false"></property>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/clancey-apollo?useUnicode=true&amp;characterEncoding=UTF8&amp;useSSL=false"
+                        userId="root"
+                        password="sunfengle">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+
+        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
+                             type="XMLMAPPER"/>
+
+        <table tableName="base_ding_user" domainObjectName="DingUser" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" identity="true" sqlStatement="MySql"/>
+        </table>
+
+        <!--<table tableName="tb_sys_user" domainObjectName="User" >
+            <generatedKey column="id" identity="true"  sqlStatement="MySql"/>
+        </table>
+
+        <table tableName="base_org" domainObjectName="Org" >
+           <generatedKey column="id" identity="true" sqlStatement="MySql"/>
+        </table>
+        <table tableName="base_menu" domainObjectName="Menu">
+            <generatedKey column="id" identity="true" sqlStatement="MySql"/>
+        </table>
+        <table tableName="base_element" domainObjectName="Element">
+            <generatedKey column="id" identity="true" sqlStatement="MySql"/>
+        </table>
+        <table tableName="tb_sys_role" domainObjectName="Role">
+            <generatedKey column="id" identity="true" sqlStatement="MySql"/>
+        </table>
+        -->
+        <!-- <table tableName="tb_sys_dict" domainObjectName="Dict">
+            <generatedKey column="id" identity="true" sqlStatement="MySql"/>
+        </table> -->
+        <!--
+        <table tableName="base_group_type" domainObjectName="GroupType" >
+        </table>-->
+        <!--<table tableName="base_resource_authority" domainObjectName="ResourceAuthority" >
+        </table>-->
+        <!--<table tableName="base_element" domainObjectName="Element">-->
+        <!--</table>-->
+        <!--<table tableName="gate_client" domainObjectName="GateClient">-->
+        <!--</table>-->
+        <!-- <table tableName="gate_log" domainObjectName="GateLog">
+         </table>-->
+         <!--<table tableName="base_file" domainObjectName="FileEntity" enableCountByExample="false"-->
+   <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+            <!--<generatedKey column="id" identity="true" sqlStatement="MySql"/>-->
+        <!--</table>-->
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>AG-Admin</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/styles.css"/>
+	<script src="http://g.alicdn.com/dingding/dinglogin/0.0.5/ddLogin.js"></script>
+	<style>
+		.reCaptchaContainer {
+			display: inline-block;
+			position: relative;
+		}
+
+		.checkBlock {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+<div class="htmleaf-container">
+	<div class="wrapper">
+		<div class="container">
+			<h1>Welcome</h1>
+
+			<form class="form" action="/login" method="post">
+				<input type="text" name="username" placeholder="Username" value="admin"/>
+				<input type="password" name="password" placeholder="Password" value="admin"/>
+				<button type="submit" id="login-button">Login</button>
+				<br><br>
+				<div id="ding-qr"></div>
+				<div id="reCaptchaContainer" class="reCaptchaContainer"></div>
+			</form>
+		</div>
+
+		<ul class="bg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</div>
+
+<script th:src="@{/static/js/jquery-2.1.1.min.js(param=1)}" type="text/javascript"></script>
+<script>
+    var appId = "[[${appId}]]";
+    var redirectUrl = "[[${redirectUrl}]]";
+    var goto = "https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=" + appId + "&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=" + redirectUrl;
+    var reCaptchaId;
+    var clickPoint = [];
+
+    $(document).ready(function () {
+        $('#login-button').click(function (event) {
+            $('form').fadeOut(200);
+            $('.wrapper').addClass('form-success');
+        });
+
+        var obj = DDLogin({
+            id: "ding-qr",
+            goto: encodeURIComponent(goto),
+            style: "",
+            href: "",
+            width: "300px",
+            height: "300px"
+        });
+
+        getReCaptcha();
+    });
+
+    var handleMessage = function (event) {
+        var origin = event.origin;
+        if (origin == "https://login.dingtalk.com") {
+            var loginTmpCode = event.data;
+            window.location = goto += '&loginTmpCode=' + loginTmpCode;
+        }
+    };
+
+    if (typeof window.addEventListener != 'undefined') {
+        window.addEventListener('message', handleMessage, false);
+    } else if (typeof window.attachEvent != 'undefined') {
+        window.attachEvent('onmessage', handleMessage);
+    }
+
+    function getReCaptcha() {
+    	return;
+        $.get("/recaptcha/get", function (data, status) {
+            reCaptchaId = data.id;
+            showReCaptchaFlip(data);
+        });
+    }
+
+    function sendReCaptcha(checkData) {
+        $.post("/recaptcha/check", {
+            reCaptchaId: reCaptchaId,
+            checkData: checkData
+        }, function (data, status) {
+            console.log(data);
+        })
+    }
+
+    function showReCaptchaFlip(reCaptcha) {
+        clickPoint = [];
+        var $reCaptchaContainer = $('#reCaptchaContainer').empty();
+        if (reCaptcha.type === 'flip') {
+            var $img = $('<img id="reCaptcha" src="' + 'data:image/' + reCaptcha.imageType + ';base64,' + reCaptcha.image + '">');
+            var $checkBlock = $('<img id="checkBlock" class="checkBlock" src="' + 'data:image/' + reCaptcha.imageType + ';base64,' + reCaptcha.imageCheck + '">');
+            $checkBlock.css('left', reCaptcha.imageCheckX + "px");
+            $checkBlock.css('top', reCaptcha.imageCheckY + "px");
+
+            $reCaptchaContainer.append($img);
+            $reCaptchaContainer.append($checkBlock);
+        } else if (reCaptcha.type === 'upside_down') {
+            var $img = $('<img id="reCaptcha" src="' + 'data:image/' + reCaptcha.imageType + ';base64,' + reCaptcha.image + '">');
+            $reCaptchaContainer.append($img);
+            $img.click(function (e) {
+                var x = e.originalEvent.clientX - $(this).offset().left;
+                var y = e.originalEvent.clientY - $(this).offset().top;
+                clickPoint.push({x: x, y: y});
+            });
+        }
+    }
+
+    function jwtAuth(username, password) {
+        $.ajax({
+            url: "/login/jwt_auth",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({username: username, password: password}),
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function sendPost() {
+        var token = "token from jwtAuth";
+        $.ajax({
+            url: "/xxxx",
+            data: {},
+            type: "POST",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + token);
+            },
+            success: function () {
+
+            }
+        })
+    }
+
+    function ajaxLogin(username, password) {
+		$.post("/login/login_ajax", {
+		    username: username,
+			password: password
+		}, function (data, status) {
+            console.log(data);
+        })
+    }
+</script>
+</body>
+</html>

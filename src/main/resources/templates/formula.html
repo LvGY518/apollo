@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/css/formula.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/js/formula.js"></script>
+</head>
+<body>
+<div class="label-container">
+    <label for="formulaSel">公式</label>
+    <select id="formulaSel">
+        <option th:each="f : ${formulas}" th:attr="data-id=${f.id},data-code=${f.code}" th:text="${f.name}"></option>
+        <option data-id="">新增</option>
+    </select>
+</div>
+<div class="label-container">
+</div>
+<div class="formulaDetail">
+    <label>计算公式</label>
+    <table id="formulaDetail" class="table">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>公式</th>
+            <th>小数位</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+<div>
+    <span>数据引用表</span>
+    <button id="addTable" class="addTable">+</button>
+</div>
+<div id="formulaTable" class="formulaTable">
+</div>
+<div class="section">
+    <div class="spec-submitbtns">
+        <button class="button js-spec-action-cancle" id="reset">重置</button>
+        <button class="button button-primary js-spec-action-create" id="saveBtn">保存</button>
+    </div>
+</div>
+<script>
+    var topCodeMap = {};
+    var expressionInfoVo = {};
+    $(document).ready(function () {
+        resetFormula();
+
+        $("#addTable").click(function () {
+
+        });
+
+        $("#formulaSel").change(function () {
+            findData($(this).find("option:selected").attr('data-id'));
+        });
+
+        $('#saveBtn').click(function () {
+            saveData();
+        });
+
+        $('#reset').click(function () {
+            resetFormula();
+        })
+    });
+</script>
+</body>
+</html>

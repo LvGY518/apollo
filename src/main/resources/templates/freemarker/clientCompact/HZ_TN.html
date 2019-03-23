@@ -1,0 +1,101 @@
+<!DOCTYPE html><!--[if IE]>  <html class="ie"> <![endif]-->
+<html>
+<head>
+	<meta charset="utf-8" />
+	<style>
+		@page {
+			size: 210mm 297mm;
+		}
+		table,div,th,div,thead,tbody,tfoot,p,span{
+			margin:0px;
+			padding:0px;
+			border:none;
+			font-size:10.5pt;
+			font-weight:400;
+			font-style:normal;
+			text-decoration:none;
+			font-family:Microsoft YaHei;
+			mso-generic-font-family:auto;
+			mso-font-charset:134;
+			mso-number-format:"\@";
+		}
+		div,span{
+			font-weight:lighter;
+		}
+
+		.title{
+			width:100%;
+			font-size:18px;
+			text-align: center;
+			padding-bottom:20px;
+		}
+		.stl_01{
+			width:100%;
+			line-height:40px;
+		}
+		.textRight{
+			text-align: right;
+		}
+		.row:after{
+			display: table;
+			content: "";
+			clear: both;
+		}
+		.grid{
+			float: left;
+		}
+		.name{
+			width:200px;
+			display: inline-block;
+			border-bottom:1px solid #000;
+		}
+		.companyName{
+			padding:0px 10px;
+			border-bottom:1px solid #000;
+		}
+		.fp{
+			text-indent: 30px;
+		}
+		.sign{
+			display: inline-block;
+			width:200px;
+		}
+		.footer{
+			margin-top:100px;
+		}
+		.time{
+			padding:0px 8px;
+		}
+		.btw{
+			padding:0px 8px;
+		}
+		.fillTime{
+			display: inline-block;
+			width:80px;
+		}
+	</style>
+</head>
+<body>
+<div class="stl_02">
+	<div class="stl_view">
+		<div class="stl_05 stl_06">
+			<div class="title">商标印刷授权书</div>
+			<div class="stl_01">致：一撕得绿色供应链（杭州）有限公司：</div>
+			<div class="stl_01 fp">贵司已与我司签订产品外包装箱加工承揽合同，现授权贵司生产制作含有我司"<span class="companyName">${name!''}</span>”商标的包装材料，授权商标注册证号： 第<span class="name">${trademarkNumber!''}</span> 号，因印刷我司商标而导致的诉讼纠纷，我司负责全权解决。</div>
+			<div class="stl_01 row">
+				<div class="conLabel grid">授权时间：</div>
+				<div class="conVal grid">
+					<span><label>${startDate?string('yyyy')}</label><label class="time">年</label><label>${startDate?string('MM')}</label><label class="time">月</label><label>${startDate?string('dd')}</label><label class="time">日</label></span>
+					<span class="btw">至</span>
+					<span><label>${endDate?string('yyyy')}</label><label class="time">年</label><label>${endDate?string('MM')}</label><label class="time">月</label><label>${endDate?string('dd')}</label><label class="time">日</label></span>
+				</div>
+			</div>
+			<div class="textRight footer"><span class="">公司名称（公章）： </span><span class="sign"></span></div>
+			<div class="textRight">
+				<span><label>${startDate?string('yyyy')}</label><label class="time">年</label><label>${startDate?string('MM')}</label><label class="time">月</label><label>${startDate?string('dd')}</label><label class="time">日</label></span>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

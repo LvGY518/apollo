@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AG-Admin</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css"/>
+    <style>
+        .reCaptchaContainer {
+            display: inline-block;
+            position: relative;
+        }
+
+        .checkBlock {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="htmleaf-container">
+    <div class="wrapper">
+        <div class="container">
+            <h1>Welcome</h1>
+            <form class="form" action="/login" method="post">
+                <div><span>appId:</span>[[${appId}]]</div>
+                <div><span>authCode:</span>[[${authCode}]]</div>
+                <div><span>transactionId:</span>[[${transactionId}]]</div>
+                <div><span>bizNo:</span>[[${bizNo}]]</div>
+                <div><span>zmScore:</span>[[${zmScore}]]</div>
+                <div><span>expiresIn:</span>[[${expiresIn}]]</div>
+                <div><span>reExpiresIn:</span>[[${reExpiresIn}]]</div>
+                <div><span>userId:</span>[[${userId}]]</div>
+                <div>
+                    <span>userInfo</span>
+                    <textarea id="zhimascore"></textarea>
+                </div>
+            </form>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+
+<script th:src="@{/static/js/jquery-2.1.1.min.js(param=1)}" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('#zhimascore').text('[[${userInfo}]]');
+    })
+</script>
+</body>
+</html>

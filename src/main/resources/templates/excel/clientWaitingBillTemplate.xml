@@ -1,0 +1,664 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Microsoft Office User</Author>
+  <LastAuthor>zjt03</LastAuthor>
+  <Created>2018-11-13T01:39:18Z</Created>
+  <LastSaved>2018-11-13T08:47:17Z</LastSaved>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>18000</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="等线" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s16" ss:Name="千位分隔">
+   <NumberFormat ss:Format="_(* #,##0.00_);_(* \(#,##0.00\);_(* &quot;-&quot;??_);_(@_)"/>
+  </Style>
+  <Style ss:ID="s18">
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s20">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s21">
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s23">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Double" ss:Weight="3"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s24" ss:Parent="s16">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Double" ss:Weight="3"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s26">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s27">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s28">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s29">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s30">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s31">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s32">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="Short Date"/>
+  </Style>
+  <Style ss:ID="s33">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="Short Date"/>
+  </Style>
+  <Style ss:ID="s34">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s35">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="Standard"/>
+  </Style>
+  <Style ss:ID="s36">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="Short Date"/>
+  </Style>
+  <Style ss:ID="s37">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="#,##0_ "/>
+  </Style>
+  <Style ss:ID="s38">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s39">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s40">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s41">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s42">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s45">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s46" ss:Parent="s16">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat ss:Format="_ * #,##0_ ;_ * \-#,##0_ ;_ * &quot;-&quot;??_ ;_ @_ "/>
+  </Style>
+  <Style ss:ID="s47">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s48">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Underline="Single"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s49">
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="#,##0_ "/>
+  </Style>
+  <Style ss:ID="s50" ss:Parent="s16">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat ss:Format="_ * #,##0_ ;_ * \-#,##0_ ;_ * &quot;-&quot;??_ ;_ @_ "/>
+  </Style>
+  <Style ss:ID="s51">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s52">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="#,##0_ "/>
+  </Style>
+  <Style ss:ID="s53">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s55" ss:Parent="s16">
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="_ * #,##0_ ;_ * \-#,##0_ ;_ * &quot;-&quot;??_ ;_ @_ "/>
+  </Style>
+  <Style ss:ID="s56">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat ss:Format="_ * #,##0.00_ ;_ * \-#,##0.00_ ;_ * &quot;-&quot;??_ ;_ @_ "/>
+  </Style>
+  <Style ss:ID="s57">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s58">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s59" ss:Parent="s16">
+   <Alignment ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" x:Family="Roman" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat ss:Format="Standard"/>
+  </Style>
+  <Style ss:ID="s60">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Microsoft YaHei" x:CharSet="134" x:Family="Swiss"
+    ss:Size="12" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s61">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Microsoft YaHei" x:CharSet="134" x:Family="Swiss"
+    ss:Size="12" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s62">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Microsoft YaHei" x:CharSet="134" x:Family="Swiss"
+    ss:Size="12" ss:Color="#000000"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="18"
+    ss:Color="#000000" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="微软雅黑" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="20" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="66" ss:DefaultRowHeight="15.75">
+   <Row ss:Height="24.75">
+    <Cell ss:MergeAcross="7" ss:StyleID="s66"><Data ss:Type="String">一撕得客户待对账清单</Data></Cell>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s18"><Data ss:Type="String">客户名称</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s20"><Data ss:Type="String">上海淘玺电子商务有限公司</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s20"/>
+    <Cell ss:StyleID="s20"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+   </Row>
+   <Row ss:Index="4" ss:Height="18.75">
+    <Cell ss:MergeAcross="4" ss:StyleID="s23"><Data ss:Type="String">本期待对账金额</Data></Cell>
+    <Cell ss:StyleID="s23"/>
+    <Cell ss:StyleID="s23"/>
+    <Cell ss:StyleID="s24"><Data ss:Type="Number">83510.44</Data></Cell>
+   </Row>
+   <Row ss:Height="16.5"/>
+   <Row ss:Height="18">
+    <Cell ss:MergeAcross="9" ss:StyleID="s69"><Data ss:Type="String">本期待收货款发生明细如下表所列示:</Data></Cell>
+   </Row>
+   <Row ss:Index="8" ss:Height="17.25">
+    <Cell ss:StyleID="s26"><Data ss:Type="String">商品名称</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">版本名称</Data></Cell>
+    <Cell ss:StyleID="s26"><Data ss:Type="String">下单日期</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">签收日期</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">销售单号</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">仓库名称</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">商品编码</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">客户单号</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">箱型</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">尺寸规格</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">订单数量</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">签收数量</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">已对账数量</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">对账中数量</Data></Cell>
+    <Cell ss:StyleID="s29"><Data ss:Type="String">待对账数量</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">单价</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">待对账金额</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">折扣比例</Data></Cell>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s30"><Data ss:Type="String">8H-Z1-大版-双支装</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">第一版</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="DateTime">2018-03-08T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s33"><Data ss:Type="DateTime">2018-03-12T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">MC0060180308001</Data></Cell>
+    <Cell ss:StyleID="s35"><Data ss:Type="String">扬州</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">C0060020213001V01</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">4657</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">拉链纸箱4.0</Data></Cell>
+    <Cell ss:StyleID="s36"><Data ss:Type="String">343*144*457</Data></Cell>
+    <Cell ss:StyleID="s37"><Data ss:Type="Number">10000</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s39"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">1200</Data></Cell>
+    <Cell ss:StyleID="s40"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">10.83</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="Number">88156.2</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">/</Data></Cell>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s30"><Data ss:Type="String">8H-Z1-大版-双支装</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">第一版</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="DateTime">2018-03-08T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s33"><Data ss:Type="DateTime">2018-03-12T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">MC0060180308001</Data></Cell>
+    <Cell ss:StyleID="s35"><Data ss:Type="String">扬州</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">C0060020213001V01</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">4657</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">拉链纸箱4.0</Data></Cell>
+    <Cell ss:StyleID="s36"><Data ss:Type="String">343*144*457</Data></Cell>
+    <Cell ss:StyleID="s37"><Data ss:Type="Number">10000</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s39"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">1200</Data></Cell>
+    <Cell ss:StyleID="s40"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">10.83</Data></Cell>
+    <Cell ss:StyleID="s58"><Data ss:Type="Number">88156.2</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">/</Data></Cell>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s30"><Data ss:Type="String">8H-Z1-大版-双支装</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">第一版</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="DateTime">2018-03-08T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s33"><Data ss:Type="DateTime">2018-03-23T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">MC0060180308001</Data></Cell>
+    <Cell ss:StyleID="s35"><Data ss:Type="String">扬州</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">C0060020213001V01</Data></Cell>
+    <Cell ss:StyleID="s41"><Data ss:Type="String">4657</Data></Cell>
+    <Cell ss:StyleID="s34"><Data ss:Type="String">拉链纸箱4.0</Data></Cell>
+    <Cell ss:StyleID="s36"><Data ss:Type="String">343*144*457</Data></Cell>
+    <Cell ss:StyleID="s37"><Data ss:Type="Number">10000</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s39"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s38"><Data ss:Type="Number">1200</Data></Cell>
+    <Cell ss:StyleID="s40"><Data ss:Type="Number">8140</Data></Cell>
+    <Cell ss:StyleID="s42"><Data ss:Type="Number">10.83</Data></Cell>
+    <Cell ss:StyleID="s58"><Data ss:Type="Number">88156.2</Data></Cell>
+    <Cell ss:StyleID="s61"><Data ss:Type="String">/</Data></Cell>
+   </Row>
+   <Row ss:Height="18">
+    <Cell ss:MergeAcross="1" ss:StyleID="s63"><Data ss:Type="String">合计</Data></Cell>
+    <Cell ss:StyleID="s45"/>
+    <Cell ss:StyleID="s46"/>
+    <Cell ss:StyleID="s45"/>
+    <Cell ss:StyleID="s45"/>
+    <Cell ss:StyleID="s46"/>
+    <Cell ss:StyleID="s41"/>
+    <Cell ss:StyleID="s47"/>
+    <Cell ss:StyleID="s47"/>
+    <Cell ss:StyleID="s47"/>
+    <Cell ss:StyleID="s47"/>
+    <Cell ss:StyleID="s47"/>
+    <Cell ss:StyleID="s47"/>
+    <Cell ss:StyleID="s40"><Data ss:Type="Number">24420</Data></Cell>
+    <Cell ss:StyleID="s41"/>
+    <Cell ss:StyleID="s59"><Data ss:Type="Number">262268.59999999998</Data></Cell>
+    <Cell ss:StyleID="s61"/>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s26"><Data ss:Type="String">下单日期</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">销售单号</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">仓库名称</Data></Cell>
+    <Cell ss:StyleID="s27"><Data ss:Type="String">费用类型</Data></Cell>
+    <Cell ss:StyleID="s48"><Data ss:Type="String">金额</Data></Cell>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s49"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s49"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s32"><Data ss:Type="DateTime">2018-03-08T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">MC0060180308001</Data></Cell>
+    <Cell ss:StyleID="s35"><Data ss:Type="String">扬州</Data></Cell>
+    <Cell ss:StyleID="s50"><Data ss:Type="String">模具费用</Data></Cell>
+    <Cell ss:StyleID="s51"><Data ss:Type="String">199</Data></Cell>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s49"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s49"/>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s32"><Data ss:Type="DateTime">2018-03-08T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">MC0060180308001</Data></Cell>
+    <Cell ss:StyleID="s35"><Data ss:Type="String">扬州</Data></Cell>
+    <Cell ss:StyleID="s50"><Data ss:Type="String">模具费用</Data></Cell>
+    <Cell ss:StyleID="s51"><Data ss:Type="String">199</Data></Cell>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s49"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s52"/>
+    <Cell ss:StyleID="s52"/>
+   </Row>
+   <Row ss:Height="18">
+    <Cell ss:MergeAcross="1" ss:StyleID="s63"><Data ss:Type="String">合计</Data></Cell>
+    <Cell ss:StyleID="s45"/>
+    <Cell ss:StyleID="s47"/>
+    <Cell ss:StyleID="s53"><Data ss:Type="String">398</Data></Cell>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s49"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s34"/>
+    <Cell ss:StyleID="s37"/>
+   </Row>
+   <Row ss:Index="18" ss:Height="17.25">
+    <Cell ss:MergeAcross="9" ss:StyleID="s65"><Data ss:Type="String">请于收到本账单三个工作日内确认明细及金额，并盖章回邮。如过期不予确认，我司将视同贵司默认此账单明细和金额。</Data></Cell>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s55"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+   </Row>
+   <Row ss:Height="17.25">
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s55"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s21"/>
+    <Cell ss:StyleID="s56"><Data ss:Type="String">客户签章</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>22</ActiveRow>
+     <ActiveCol>13</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

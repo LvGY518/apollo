@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="standardContractProcess" name="标准合同审批流程" isExecutable="true">
+    <startEvent id="start" name="开始">
+      <extensionElements>
+        <activiti:formProperty id="createUser" name="合同id" type="string" variable="createUser" required="true"></activiti:formProperty>
+      </extensionElements>
+    </startEvent>
+    <userTask id="wait_audit_supply" name="待供应链二级领导审核" >
+      <extensionElements>
+         <activiti:formProperty id="createUser" name="合同id" type="string" variable="createUser" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <exclusiveGateway id="wait_audit_supply_option"></exclusiveGateway>
+    <userTask id="wait_audit_supply_lead" name="待供应链领导审核" ></userTask>
+    <sequenceFlow id="sid-6226E99F-BAB9-4D99-8709-5D187563B556" sourceRef="wait_audit_supply" targetRef="wait_audit_supply_option"></sequenceFlow>
+    <userTask id="audit_fail_supply" name="供应链二级领导拒绝" ></userTask>
+    <userTask id="wait_audit_financial" name="待财务审核" ></userTask>
+    <exclusiveGateway id="wait_audit_supply_lead_option"></exclusiveGateway>
+    <sequenceFlow id="sid-4D7722D0-D4F1-475D-94EF-8C6E72A464FF" sourceRef="wait_audit_supply_lead" targetRef="wait_audit_supply_lead_option"></sequenceFlow>
+    <userTask id="audit_fail_supply_lead" name="供应链领导拒绝"></userTask>
+    <sequenceFlow id="sid-B244A095-BF7B-44EC-8A4C-AFCB2DE4A3AA" name="重新提交审核 " sourceRef="audit_fail_supply_lead" targetRef="wait_audit_supply"></sequenceFlow>
+    <sequenceFlow id="sid-8DFC18A6-01BB-4502-97C4-21448D3F2A71" name="重新提交审核" sourceRef="audit_fail_supply" targetRef="wait_audit_supply"></sequenceFlow>
+    <endEvent id="end" name="结束"></endEvent>
+    <userTask id="audit_fail_financial" name="财务审核拒绝"></userTask>
+    <exclusiveGateway id="wait_audit_financial_option" name="通过"></exclusiveGateway>
+    <sequenceFlow id="sid-534A8EB4-B68C-4D23-B5E0-29757CE5EBB4" sourceRef="wait_audit_financial" targetRef="wait_audit_financial_option"></sequenceFlow>
+    <sequenceFlow id="sid-828992CD-7CE9-45C8-BEF1-3D5E62BC6AA4" name="财务审核拒绝" sourceRef="audit_fail_financial" targetRef="wait_audit_supply"></sequenceFlow>
+    <userTask id="have_archive" name="已归档"></userTask>
+    <sequenceFlow id="sid-A7A6217C-94A5-46E2-80C3-EAE0D37AE62B" sourceRef="have_archive" targetRef="end"></sequenceFlow>
+    <sequenceFlow id="sid-60BEB026-26B3-4FC1-A963-0EC8E0E29959" sourceRef="start" targetRef="wait_audit_supply"></sequenceFlow>
+    <sequenceFlow id="wait_audit_supply_pass" name="通过" sourceRef="wait_audit_supply_option" targetRef="wait_audit_supply_lead">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${option==1}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="wait_audit_supply_refuse" name="拒绝" sourceRef="wait_audit_supply_option" targetRef="audit_fail_supply">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${option==2}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="wait_audit_supply_lead_pass" name="通过" sourceRef="wait_audit_supply_lead_option" targetRef="wait_audit_financial">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${option==1}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="wait_audit_supply_lead_refuse" name="拒绝" sourceRef="wait_audit_supply_lead_option" targetRef="audit_fail_supply_lead">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${option==2}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="wait_audit_financial_pass" sourceRef="wait_audit_financial_option" targetRef="have_archive">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${option==1}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="wait_audit_financial_refuse" name="拒绝" sourceRef="wait_audit_financial_option" targetRef="audit_fail_financial">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${option==2}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_process">
+    <bpmndi:BPMNPlane bpmnElement="standardContractProcess" id="BPMNPlane_process">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="30.0" width="30.0" x="30.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="wait_audit_supply" id="BPMNShape_wait_audit_supply">
+        <omgdc:Bounds height="80.0" width="100.0" x="135.0" y="195.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="wait_audit_supply_option" id="BPMNShape_wait_audit_supply_option">
+        <omgdc:Bounds height="40.0" width="40.0" x="315.0" y="215.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="wait_audit_supply_lead" id="BPMNShape_wait_audit_supply_lead">
+        <omgdc:Bounds height="80.0" width="100.0" x="420.0" y="195.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="audit_fail_supply" id="BPMNShape_audit_fail_supply">
+        <omgdc:Bounds height="80.0" width="100.0" x="285.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="wait_audit_financial" id="BPMNShape_wait_audit_financial">
+        <omgdc:Bounds height="80.0" width="100.0" x="705.0" y="195.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="wait_audit_supply_lead_option" id="BPMNShape_wait_audit_supply_lead_option">
+        <omgdc:Bounds height="40.0" width="40.0" x="600.0" y="215.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="audit_fail_supply_lead" id="BPMNShape_audit_fail_supply_lead">
+        <omgdc:Bounds height="80.0" width="100.0" x="570.0" y="315.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="28.0" width="28.0" x="1155.0" y="221.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="audit_fail_financial" id="BPMNShape_audit_fail_financial">
+        <omgdc:Bounds height="80.0" width="100.0" x="855.0" y="60.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="wait_audit_financial_option" id="BPMNShape_wait_audit_financial_option">
+        <omgdc:Bounds height="40.0" width="40.0" x="885.0" y="215.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="have_archive" id="BPMNShape_have_archive">
+        <omgdc:Bounds height="80.0" width="100.0" x="990.0" y="195.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-534A8EB4-B68C-4D23-B5E0-29757CE5EBB4" id="BPMNEdge_sid-534A8EB4-B68C-4D23-B5E0-29757CE5EBB4">
+        <omgdi:waypoint x="805.0" y="235.0"></omgdi:waypoint>
+        <omgdi:waypoint x="885.0" y="235.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-828992CD-7CE9-45C8-BEF1-3D5E62BC6AA4" id="BPMNEdge_sid-828992CD-7CE9-45C8-BEF1-3D5E62BC6AA4">
+        <omgdi:waypoint x="855.0" y="109.375"></omgdi:waypoint>
+        <omgdi:waypoint x="235.0" y="225.625"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="wait_audit_financial_refuse" id="BPMNEdge_wait_audit_financial_refuse">
+        <omgdi:waypoint x="905.425925925926" y="215.42592592592592"></omgdi:waypoint>
+        <omgdi:waypoint x="905.1476014760148" y="140.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-60BEB026-26B3-4FC1-A963-0EC8E0E29959" id="BPMNEdge_sid-60BEB026-26B3-4FC1-A963-0EC8E0E29959">
+        <omgdi:waypoint x="60.0" y="235.0"></omgdi:waypoint>
+        <omgdi:waypoint x="135.0" y="235.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="wait_audit_supply_lead_refuse" id="BPMNEdge_wait_audit_supply_lead_refuse">
+        <omgdi:waypoint x="620.4201680672269" y="254.57983193277312"></omgdi:waypoint>
+        <omgdi:waypoint x="620.1673640167364" y="315.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B244A095-BF7B-44EC-8A4C-AFCB2DE4A3AA" id="BPMNEdge_sid-B244A095-BF7B-44EC-8A4C-AFCB2DE4A3AA">
+        <omgdi:waypoint x="570.0" y="341.2068965517241"></omgdi:waypoint>
+        <omgdi:waypoint x="235.0" y="248.79310344827587"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="wait_audit_supply_lead_pass" id="BPMNEdge_wait_audit_supply_lead_pass">
+        <omgdi:waypoint x="639.570895522388" y="235.42910447761193"></omgdi:waypoint>
+        <omgdi:waypoint x="705.0" y="235.18587360594796"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-6226E99F-BAB9-4D99-8709-5D187563B556" id="BPMNEdge_sid-6226E99F-BAB9-4D99-8709-5D187563B556">
+        <omgdi:waypoint x="235.0" y="235.0"></omgdi:waypoint>
+        <omgdi:waypoint x="315.0" y="235.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="wait_audit_supply_pass" id="BPMNEdge_wait_audit_supply_pass">
+        <omgdi:waypoint x="354.57089552238807" y="235.42910447761193"></omgdi:waypoint>
+        <omgdi:waypoint x="420.0" y="235.18587360594796"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-4D7722D0-D4F1-475D-94EF-8C6E72A464FF" id="BPMNEdge_sid-4D7722D0-D4F1-475D-94EF-8C6E72A464FF">
+        <omgdi:waypoint x="520.0" y="235.0"></omgdi:waypoint>
+        <omgdi:waypoint x="600.0" y="235.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="wait_audit_supply_refuse" id="BPMNEdge_wait_audit_supply_refuse">
+        <omgdi:waypoint x="335.4047619047619" y="215.4047619047619"></omgdi:waypoint>
+        <omgdi:waypoint x="335.18957345971563" y="170.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="wait_audit_financial_pass" id="BPMNEdge_wait_audit_financial_pass">
+        <omgdi:waypoint x="924.570895522388" y="235.42910447761193"></omgdi:waypoint>
+        <omgdi:waypoint x="990.0" y="235.18587360594796"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-A7A6217C-94A5-46E2-80C3-EAE0D37AE62B" id="BPMNEdge_sid-A7A6217C-94A5-46E2-80C3-EAE0D37AE62B">
+        <omgdi:waypoint x="1090.0" y="235.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1155.0" y="235.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
